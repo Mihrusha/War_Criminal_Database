@@ -48,7 +48,7 @@ $user->TakeTestComment($conn, $value);
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="avatar" id="inlineRadio2" value="avatar2.png">
-                                <img src="/WarCriminalsDatabase/photos\avatar2.png"width="90" height="50"name="avatar">
+                                <img src="/WarCriminalsDatabase/photos\avatar2.png"width="50" height="50"name="avatar">
                                 <label class="form-check-label" for="inlineRadio2">2</label>
                             </div>
                             <div class="form-check form-check-inline">

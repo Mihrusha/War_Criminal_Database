@@ -56,6 +56,10 @@ crossorigin="anonymous"></script>
   				<label for="text" class="form-label">Category_Id</label>
 				<input type="text" class="form-control" name="category_id" id="category_id">
   			</div>
+			  <div class="mb-3">
+  				<label for="text" class="form-label">Files</label>
+				<input type="text" class="form-control" name="files" id="files">
+  			</div>
   			<button type="submit" class="btn btn-primary">
   				EDIT</button>
   			<a href="../admin.php">Admin</a>

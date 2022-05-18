@@ -46,6 +46,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="delete_comments.php"><h5>Comments</h5></a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="edit_users.php"><h5>Edit Users</h5></a>
+                        </li>
 
                         <li>
                             <form class="d-flex">
