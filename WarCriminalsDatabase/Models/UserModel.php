@@ -106,7 +106,8 @@ class User
         if ($this->usernameCheck($conn, $_POST["user_name"]) == 0) {
             echo "not exist";
         } 
-         if($_POST["user_name"]!=null && $_POST["massage"]!=null && $this->usernameCheck($conn, $_POST["user_name"]) >= 1)
+         if($_POST["user_name"]!=null && $_POST["massage"]!=null && $this->usernameCheck($conn, $_POST["user_name"]) >= 1
+         && $this->IsBanned($conn, $_POST["user_name"]) >= 1)
          {
             $name = $conn->quote($_POST["user_name"]);
             $massage = $conn->quote($_POST["massage"]);
@@ -141,6 +142,23 @@ class User
             return 0;
         }
     }
+
+    public function IsBanned($conn, $name)
+    {
+
+        $stmt = $conn->prepare("SELECT name FROM users WHERE name = :name AND IsBanned=FALSE");
+        $stmt->bindParam(':name', $name);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            echo "not banned!";
+            return 1;
+        } else {
+            echo " banned";
+            return 0;
+        }
+    }
+
 
     function get_all_massages($conn)
     {

@@ -24,10 +24,9 @@ class Item
         $this->description = $description;
         $this->category_id = $category_id;
     }
+
     function get_all_pokidky($conn)
     {
-
-
 
         $sql = "SELECT*FROM pokidky ORDER by id ASC";
         $stmt = $conn->prepare($sql);
@@ -91,7 +90,7 @@ class Item
     function get_one($conn)
     {
         $name = $conn->quote($_POST["name"]);
-        $sql = "SELECT name, description, photo FROM pokidky WHERE name=$name";
+        $sql = "SELECT name, description, photo,files FROM pokidky WHERE name=$name";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -107,24 +106,24 @@ class Item
         $conn = null;
     }
 
-    function get_one_new($conn,$method)
-    {
-        $name = $conn->quote($method);
-        $sql = "SELECT name, description, photo FROM pokidky WHERE name=$name";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        if ($stmt->rowCount() > 0) {
-            $item = $stmt->fetchAll();
-        } else {
-            $item = 0;
-        }
+    // function get_one_new($conn,$method)
+    // {
+    //     $name = $conn->quote($method);
+    //     $sql = "SELECT name, description, photo FROM pokidky WHERE name=$name";
+    //     $stmt = $conn->prepare($sql);
+    //     $stmt->execute();
+    //     if ($stmt->rowCount() > 0) {
+    //         $item = $stmt->fetchAll();
+    //     } else {
+    //         $item = 0;
+    //     }
 
-        return $item;
+    //     return $item;
 
-        //return $row['description'] . "\t";
+    //     //return $row['description'] . "\t";
 
-        $conn = null;
-    }
+    //     $conn = null;
+    // }
 
 
     function get_from_category($conn,$method)
@@ -164,7 +163,8 @@ class Item
             $photo = $conn->quote($_POST["photo"]);
             $description = $conn->quote($_POST["description"]);
             $category_id = $conn->quote($_POST["category_id"]);
-            $sql = "INSERT INTO pokidky (name, description, category_id,photo) VALUES ($name, $description, $category_id,$photo)";
+            $files = $conn->quote($_POST["files"]);
+            $sql = "INSERT INTO pokidky (name, description, category_id,photo,files) VALUES ($name, $description, $category_id,$photo,$files)";
             $stmt = $conn->prepare($sql);
             if ($sql != null) {
                 $stmt->execute();
@@ -182,8 +182,9 @@ class Item
         $photo = $conn->quote($_POST["photo"]);
         $description = $conn->quote($_POST["description"]);
         $category_id = $conn->quote($_POST["category_id"]);
+        $files = $conn->quote($_POST["files"]);
         $sql = "UPDATE  pokidky SET pokidky.name=$name, pokidky.description=$description, pokidky.category_id=$category_id,
-        pokidky.photo=$photo 
+        pokidky.photo=$photo,pokidky.files=$files 
         WHERE pokidky.name like $name";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
