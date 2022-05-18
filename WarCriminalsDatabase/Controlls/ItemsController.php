@@ -73,11 +73,11 @@ class ItemsController
 
     }
 
-    public function ReadOne()
-    {include 'C:\xampp\htdocs\WarCriminalsDatabase\database_connection.php';
-        $item = $this->i_model->get_one($conn);
+    // public function ReadOne()
+    // {include 'C:\xampp\htdocs\WarCriminalsDatabase\database_connection.php';
+    //     $item = $this->i_model->get_one($conn);
        
-    }
+    // }
 
     public function Edit()
     {
