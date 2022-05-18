@@ -1,0 +1,34 @@
+.Action_col
+{
+    width: 15%;
+    
+}
+
+.Number_col
+{
+    width: 5%;
+    text-align: center;
+}
+
+.Category_col
+{
+    width: 15%;
+}
+
+.Photo_col
+{
+    text-align: center;
+    width: 15%
+}
+
+.Descr_col
+{
+    display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+#Edit
+{
+    width: 74px;
+}
