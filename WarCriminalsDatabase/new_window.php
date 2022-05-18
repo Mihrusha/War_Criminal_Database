@@ -26,6 +26,7 @@ include_once 'C:\xampp\htdocs\WarCriminalsDatabase\Controlls\ItemsController.php
         <?php
 
         foreach ($item as $row) { ?>
+
             <div class="container border border-success ">
                 <div class="row">
                     <div class="col-md-4">
@@ -38,31 +39,26 @@ include_once 'C:\xampp\htdocs\WarCriminalsDatabase\Controlls\ItemsController.php
                         <div>
                             <h4><?= $row['description'] ?></h4>
                         </div>
-                        <div class ='col'>
-                        <a href="index.php" class="btn btn-primary">Back</a>
+                        <div>
+                           
+                            <p><a href="files/<?= $row['files'] ?>" download>Download Files</a>
                         </div>
-                        <div class ='col  mt-3'>
-                        <a href="Views\comments.php" class="btn btn-success">Comments</a>
+                        <div class='col'>
+                            <a href="index.php" class="btn btn-primary">Back</a>
                         </div>
-                        
-                       
-
+                        <div class='col  mt-3'>
+                            <a href="Views\comments.php" class="btn btn-success">Comments</a>
+                        </div>
                     </div>
-                    </div>
-                    
                 </div>
-
             </div>
-        <?php } ?>
-        <div class='row'>
 
-
-
-
-        </div>
     </div>
+<?php } ?>
+<div class='row'>
 
-
+</div>
+</div>
 
 </body>
 
