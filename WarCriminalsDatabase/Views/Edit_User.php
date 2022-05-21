@@ -1,8 +1,8 @@
 <?php 
 
-include_once("..\Controlls\ItemsController.php");
-    $controller = new ItemsController();
- 	$controller->AddItem();
+include_once("..\Controlls\UserController.php");
+    $controller = new UserController();
+ 	$controller->Edit();
 ?>
 
 
@@ -32,37 +32,24 @@ crossorigin="anonymous"></script>
 		  style="max-width: 30rem; width: 100%"
 		   method="POST" action="">
 
-  			<h1 class="text-center display-4 pb-5">ADD ITEM</h1>
-  			
-			  <div class="mb-3">
-  				<label for="name" class="form-label">Surname</label>
-		  		<input type="text" class="form-control" name="surname">
-  			</div>
 
+		  
+
+  			<h1 class="text-center display-4 pb-5">EDIT USER</h1>
+  			
+			
   			<div class="mb-3">
   				<label for="name" class="form-label">Name</label>
 		  		<input type="text" class="form-control" name="name">
   			</div>
 
-			<div class="mb-3">
-  				<label for="name" class="form-label">Photo Name</label>
-		  		<input type="text" class="form-control" name="photo">
-  			</div>
-
-  			<div class="mb-3">
-  				<label for="text" class="form-label">Description</label>
-				<textarea type="text" class="form-control" name="description" id="description"></textarea> 
-  			</div>
-              <div class="mb-3">
-  				<label for="text" class="form-label">Category_Id</label>
-				<input type="text" class="form-control" name="category_id" id="category_id">
-  			</div>
+			
 			  <div class="mb-3">
-  				<label for="text" class="form-label">Files</label>
-				<input type="text" class="form-control" name="files" id="files">
+  				<label for="text" class="form-label">IsBanned</label>
+				<input type="text" class="form-control" name="IsBanned" id="IsBanned">
   			</div>
   			<button type="submit" class="btn btn-primary">
-  				Add Pokidyok</button>
+  				EDIT</button>
   			<a href="../admin.php">Admin</a>
   		</form>
   	</div>
@@ -70,4 +57,3 @@ crossorigin="anonymous"></script>
 
 </body>
 </html>
-

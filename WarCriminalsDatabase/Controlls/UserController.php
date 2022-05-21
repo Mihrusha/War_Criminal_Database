@@ -28,6 +28,23 @@ class UserController
         
     }
 
+    public function Get_All_Users()
+    {
+        include 'C:\xampp\htdocs\WarCriminalsDatabase\database_connection.php';
+        $users = $this->u_model->Get_Users($conn);
+    }
+
+    public function Edit()
+    {
+        include 'C:\xampp\htdocs\WarCriminalsDatabase\database_connection.php';
+        if (isset($_POST)) {
+            $user = $this->u_model->Edit($conn);
+            
+        }
+
+        
+    }
+
     public function TakeComment($method,$value)
     {
         include 'C:\xampp\htdocs\WarCriminalsDatabase\database_connection.php';

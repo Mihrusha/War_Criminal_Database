@@ -1,6 +1,7 @@
 .header
 {
     text-align: center;
+    background-color: antiquewhite;
 }
 
 .d-flex
@@ -8,3 +9,7 @@
      padding-left: 30px;
 }
 
+.bg-light
+{
+    background-color: aquamarine;
+}

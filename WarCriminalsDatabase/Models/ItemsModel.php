@@ -43,23 +43,20 @@ class Item
 
     function pugination($conn)
     {
-        $this->start = 1;
-        $this->perPage = 8;
+        $this->start = 0;
+        $this->perPage = 4;
         $this->page_counter = 1;
-        $this->next = $this->page_counter + 1;
-        $this->previous = $this->page_counter - 1;
-       
-
+        
         if (isset($_GET['start'])) {
             $this->start = $_GET['start'];
             //$this->offset = $this->start* $this->perPage = 8;
             //  $this->page_counter =  $_GET['start'];
-             $this->page_first_result = $this->start * $this->perPage;
+             $this->start = $this->start * $this->perPage;
             // $this->next = $this->page_counter + 1;
             // $this->previous = $this->page_counter - 1;
         }
         else {
-            $this->start = 1;
+            $this->start = 0;
         }
 
         $count_query = "SELECT * FROM pokidky ORDER by id ASC";
@@ -74,6 +71,25 @@ class Item
     function get_all_pokidky_pagination($conn)
     {
        $this->pugination($conn);
+
+       $this->start = 0;
+       $this->perPage = 4;
+       $this->page_counter = 1;
+       
+      
+
+       if (isset($_GET['start'])) {
+           $this->start = $_GET['start'];
+           //$this->offset = $this->start* $this->perPage = 8;
+           //  $this->page_counter =  $_GET['start'];
+            $this->start = ($this->start * $this->perPage) ;
+           // $this->next = $this->page_counter + 1;
+           // $this->previous = $this->page_counter - 1;
+       }
+       else {
+           $this->start = 0;
+       }
+
 
         $sql = "SELECT * FROM pokidky ORDER by id ASC LIMIT $this->start, $this->perPage";
         $stmt = $conn->prepare($sql);
@@ -106,24 +122,31 @@ class Item
         $conn = null;
     }
 
-    // function get_one_new($conn,$method)
-    // {
-    //     $name = $conn->quote($method);
-    //     $sql = "SELECT name, description, photo FROM pokidky WHERE name=$name";
-    //     $stmt = $conn->prepare($sql);
-    //     $stmt->execute();
-    //     if ($stmt->rowCount() > 0) {
-    //         $item = $stmt->fetchAll();
-    //     } else {
-    //         $item = 0;
-    //     }
+    function get_one_new($conn,$method)
+    {
+        if (!empty($method))
+        {
+        
 
-    //     return $item;
+            $name = $conn->quote($method);
+        $sql = "SELECT surname,name, description, photo,files FROM pokidky WHERE surname = $name";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $item = $stmt->fetchAll();
+        } else {
+            $item = 0;
+        }
 
-    //     //return $row['description'] . "\t";
+        return $item;
+        }
+        else{
+            echo 'Write something';
+        }
+        //return $row['description'] . "\t";
 
-    //     $conn = null;
-    // }
+        $conn = null;
+    }
 
 
     function get_from_category($conn,$method)
@@ -158,13 +181,14 @@ class Item
 
     function Add($conn)
     {
-        if ($_POST["name"] != null) {
+        if (!empty($_POST["surname"])) {
+            $surname = $conn->quote($_POST["surname"]);
             $name = $conn->quote($_POST["name"]);
             $photo = $conn->quote($_POST["photo"]);
             $description = $conn->quote($_POST["description"]);
             $category_id = $conn->quote($_POST["category_id"]);
             $files = $conn->quote($_POST["files"]);
-            $sql = "INSERT INTO pokidky (name, description, category_id,photo,files) VALUES ($name, $description, $category_id,$photo,$files)";
+            $sql = "INSERT INTO pokidky (surname,name, description, category_id,photo,files) VALUES ($surname,$name, $description, $category_id,$photo,$files)";
             $stmt = $conn->prepare($sql);
             if ($sql != null) {
                 $stmt->execute();
@@ -177,18 +201,19 @@ class Item
 
     function Edit($conn)
     {
-
+        if (!empty($_POST["surname"])) {
+        $surname = $conn->quote($_POST["surname"]);
         $name = $conn->quote($_POST["name"]);
         $photo = $conn->quote($_POST["photo"]);
         $description = $conn->quote($_POST["description"]);
         $category_id = $conn->quote($_POST["category_id"]);
         $files = $conn->quote($_POST["files"]);
-        $sql = "UPDATE  pokidky SET pokidky.name=$name, pokidky.description=$description, pokidky.category_id=$category_id,
+        $sql = "UPDATE  pokidky SET pokidky.surname=$surname,pokidky.name=$name, pokidky.description=$description, pokidky.category_id=$category_id,
         pokidky.photo=$photo,pokidky.files=$files 
-        WHERE pokidky.name like $name";
+        WHERE pokidky.surname like $name";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-
+        }
 
         $conn = null;
     }

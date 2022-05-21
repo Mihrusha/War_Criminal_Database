@@ -2,6 +2,7 @@
  error_reporting(E_ERROR);
 include 'C:\xampp\htdocs\WarCriminalsDatabase\database_connection.php';
 include_once '../Controlls/UserController.php';
+include 'C:\xampp\htdocs\WarCriminalsDatabase\Views\HeaderView2.php';
 $value = $_POST['topic'];
 $user = new User;
 $user->TakeTestComment($conn, $value);
@@ -55,6 +56,21 @@ $user->TakeTestComment($conn, $value);
                                 <input class="form-check-input" type="radio" name="avatar" id="inlineRadio2" value="avatar3.jpg">
                                 <img src="/WarCriminalsDatabase/photos\avatar3.jpg"width="50" height="50"name="avatar">
                                 <label class="form-check-label" for="inlineRadio2">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="avatar" id="inlineRadio2" value="avatar4.jpg">
+                                <img src="/WarCriminalsDatabase/photos\avatar4.jpg"width="50" height="50"name="avatar">
+                                <label class="form-check-label" for="inlineRadio2">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="avatar" id="inlineRadio2" value="avatar5.jpg">
+                                <img src="/WarCriminalsDatabase/photos\avatar5.jpg"width="50" height="50"name="avatar">
+                                <label class="form-check-label" for="inlineRadio2">5</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="avatar" id="inlineRadio2" value="avatar6.jpg">
+                                <img src="/WarCriminalsDatabase/photos\avatar6.jpg"width="50" height="50"name="avatar">
+                                <label class="form-check-label" for="inlineRadio2">6</label>
                             </div>
                         </div>
                         <div class="mb-3">

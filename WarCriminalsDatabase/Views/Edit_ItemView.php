@@ -37,7 +37,10 @@ crossorigin="anonymous"></script>
 
   			<h1 class="text-center display-4 pb-5">EDIT ITEM</h1>
   			
-			
+			  <div class="mb-3">
+  				<label for="name" class="form-label">Surname</label>
+		  		<input type="text" class="form-control" name="surname">
+  			</div>
   			<div class="mb-3">
   				<label for="name" class="form-label">Name</label>
 		  		<input type="text" class="form-control" name="name">

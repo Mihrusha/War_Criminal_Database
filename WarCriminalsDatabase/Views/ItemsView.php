@@ -47,7 +47,7 @@
                             <a class="nav-link" href="delete_comments.php"><h5>Comments</h5></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="edit_users.php"><h5>Edit Users</h5></a>
+                            <a class="nav-link" href="Users.php"><h5> Users</h5></a>
                         </li>
 
                         <li>
@@ -77,7 +77,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Photo</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Description</th>
+                            <!-- <th scope="col">Description</th> -->
                             <th scope="col">Category</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -98,13 +98,13 @@
                                             </td>
 
                                              <td>
-                                                <?= $pokidyok['name'] ?>
+                                                <?= $pokidyok['surname'] ?> <?= $pokidyok['name'] ?>
                                             </td>
 
-                                             <td>
+                                             <!-- <td>
                                                  
                                                 <p class='Descr_col'><?= $pokidyok['description'] ?></p> 
-                                            </td>
+                                            </td> -->
 
                                             <td class='Category_col'>
                                                  <?php 

@@ -87,7 +87,6 @@ class ItemsController
             
         }
 
-        
     }
 
 
@@ -99,10 +98,8 @@ class ItemsController
         $start=$this->i_model->start;
         $perPage=$this->i_model->perPage;
         $pagLink=$this->i_model->pagLink;
-       // $previous = $this->i_model->previous;
+
        
-        //  include "category_func.php";
-          //$category = get_all_category($conn);
           if (!isset($_GET['items'])) {
                 $paginations-$this->i_model->pugination($conn);
               $pokidky = $this->i_model->get_all_pokidky_pagination($conn);

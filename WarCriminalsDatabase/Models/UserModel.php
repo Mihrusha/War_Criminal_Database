@@ -59,6 +59,42 @@ class User
         }
     }
 
+
+    public function Get_Users($conn)
+    {
+        
+
+            $sql = "SELECT*FROM users ORDER by id ASC";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                $users = $stmt->fetchAll();
+            } else {
+                $users = 0;
+            }
+    
+            return $users;
+        
+    }
+
+    function Edit($conn)
+    {
+
+        $name = $conn->quote($_POST["name"]);
+       
+        $IsBanned = $conn->quote($_POST["IsBanned"]);
+        $sql = "UPDATE  users SET users.IsBanned=$IsBanned
+        
+        WHERE users.name like $name";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+
+        $conn = null;
+    }
+
+    
+
     public function TakeComment($conn)
     {
         if (empty($_POST["user_name"])) {
@@ -94,17 +130,17 @@ class User
     public function TakeTestComment($conn,$method)
     {
         if (empty($_POST["user_name"])) {
-            $errMsg = "Error! You didn't enter the Name.";
+            $errMsg = "Please enter name.";
             echo $errMsg;
         }
 
         if (empty($_POST["massage"])) {
-            $errMsg = "Error! You didn't enter the massage.";
+            $errMsg = "Please enter massage.";
             echo $errMsg;
         }
        
         if ($this->usernameCheck($conn, $_POST["user_name"]) == 0) {
-            echo "not exist";
+            echo "You must be registrated user";
         } 
          if($_POST["user_name"]!=null && $_POST["massage"]!=null && $this->usernameCheck($conn, $_POST["user_name"]) >= 1
          && $this->IsBanned($conn, $_POST["user_name"]) >= 1)
@@ -135,10 +171,10 @@ class User
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            echo "exists!";
+            // echo "exists!";
             return 1;
         } else {
-            echo "non existant";
+            //echo "non existant";
             return 0;
         }
     }
@@ -151,10 +187,10 @@ class User
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            echo "not banned!";
+            // echo "not banned!";
             return 1;
         } else {
-            echo " banned";
+            echo " You are banned";
             return 0;
         }
     }
@@ -177,7 +213,7 @@ class User
     {
         
         $sql = "SELECT name, massage, pok_name, avatar FROM  massages
-        WHERE pok_name = '$name'";
+        WHERE pok_name LIKE '$name'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {

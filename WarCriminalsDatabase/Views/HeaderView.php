@@ -1,5 +1,5 @@
 <?php
-require_once 'Controlls\ItemsController.php';
+require_once 'C:\xampp\htdocs\WarCriminalsDatabase\Controlls\ItemsController.php';
 
 
 ?>
@@ -33,7 +33,7 @@ require_once 'Controlls\ItemsController.php';
     <div class='header'>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-            <h1> War Criminal Database</h1>
+            <h1> Pokidky Database</h1>
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,7 @@ require_once 'Controlls\ItemsController.php';
 
 
                         <li>
-                            <form class="d-flex" method='post' action="">
+                            <form class="d-flex" method='post' action="new_window.php">
 
                                 <input class="form-control me-2" type="text" name='name' placeholder="name" aria-label="name">
                                 <input type="submit" class="btn btn-outline-success" type="submit" name='Search' value="Search">
