@@ -20,6 +20,6 @@ if (
 
 
 <?php } else {
-    header("Location: Views\LoginView.php");
+    header("Location: ./Views\LoginView.php");
     exit;
 } ?>

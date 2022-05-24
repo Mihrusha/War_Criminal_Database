@@ -4,7 +4,7 @@ include_once './Controlls\UserController.php';
 include 'C:\xampp\htdocs\WarCriminalsDatabase\database_connection.php';
 
 
-
+// phpinfo();
 
 $path_to_file = 'counter.txt'; //будет зависеть от вашего желания и структуры ваших адресов сайта
 
@@ -42,6 +42,52 @@ echo '<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="curre
 
 
     <div class='row'>
+        
+
+
+        <div class='col-md-10'>
+            <section class="details-card">
+                <div class="container">
+
+                    <div class="row">
+                        <?php
+                        foreach ($pokidky as $pokidyok) { ?>
+                            <div class="col-md-3">
+                                <div class="card-content">
+                                    <p class="btn btn-card border-2"><?php foreach ($category as $row) {
+                                                                            if ($row['id'] == $pokidyok['category_id'])
+                                                                                echo $row['name'];
+                                                                        }  ?></p>
+                                    <div class="card-img">
+                                        <img class='picture' width="" src="photos/<?= $pokidyok['photo'] ?>">
+
+                                    </div>
+                                    <div class="card-desc">
+                                        <h3> <?= $pokidyok['surname'] ?><?= $pokidyok['name'] ?></h3>
+                                        <!-- <?php $rest = substr("{$pokidyok['description']}", 0, 25) ?>
+                                        <?php echo "<p>{$rest}</p>" ?> -->
+
+
+                                        <form action='new_window.php' method='post'>
+                                            <input type='hidden' name='name' value='<?= $pokidyok['surname'] ?> ' />
+                                            <!-- <input type='hidden' name='read' value='read' /> -->
+                                            <input type="submit" name='read' id='Read' class="btn btn-card border-2" value="READ">
+
+                                        </form>
+
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                
+
+
+            </section>
+        </div>
         <div class='col-md-2 '>
             <div class='container'>
 
@@ -86,65 +132,6 @@ echo '<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="curre
             </div>
 
 
-        </div>
-
-
-        <div class='col-md-10'>
-            <section class="details-card">
-                <div class="container">
-
-                    <div class="row">
-                        <?php
-                        foreach ($pokidky as $pokidyok) { ?>
-                            <div class="col-md-3">
-                                <div class="card-content">
-                                    <p class="btn btn-card border-2"><?php foreach ($category as $row) {
-                                                                            if ($row['id'] == $pokidyok['category_id'])
-                                                                                echo $row['name'];
-                                                                        }  ?></p>
-                                    <div class="card-img">
-                                        <img class='picture' width="" src="photos/<?= $pokidyok['photo'] ?>">
-
-                                    </div>
-                                    <div class="card-desc">
-                                        <h3> <?= $pokidyok['surname'] ?><?= $pokidyok['name'] ?></h3>
-                                        <!-- <?php $rest = substr("{$pokidyok['description']}", 0, 25) ?>
-                                        <?php echo "<p>{$rest}</p>" ?> -->
-
-
-                                        <form action='new_window.php' method='post'>
-                                            <input type='hidden' name='name' value='<?= $pokidyok['surname'] ?> ' />
-                                            <!-- <input type='hidden' name='read' value='read' /> -->
-                                            <input type="submit" name='read' id='Read' class="btn btn-card border-2" value="READ">
-
-                                        </form>
-
-
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        <?php } ?>
-                    </div>
-                    <div class='inner'>
-                        <?php
-
-                        // $items = new ItemsController();
-                        // $items->Read($_POST['read']);
-                        // $items->Search_Name($_POST['Search']);
-
-                        // $items->Search_by_Category($_POST['Subject']);
-
-                        // $user = new UserController();
-                        // $user->TakeComment($_POST['Comment']);
-
-
-                        ?>
-                    </div>
-
-
-            </section>
         </div>
         <div class='comtainer justify-content-center m-4'>
             <nav aria-label="Page navigation example">

@@ -65,7 +65,7 @@ echo '<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="curre
                                         
                                     </div>
                                     <div class="card-desc">
-                                        <h3> <?= $pokidyok['name'] ?></h3>
+                                        <h3><?= $pokidyok['surname'] ?> <?= $pokidyok['name'] ?></h3>
                                         <!-- <?php $rest = substr("{$pokidyok['description']}", 0, 25) ?>
                                         <?php echo "<p>{$rest}</p>" ?> -->
 

@@ -41,13 +41,13 @@ class User
 
         if ($this->usernameCheck($conn, $_POST["name"]) == 1) {
             echo "already exist";
-        } else {
+        } else if(!empty($_POST["name"]) && !empty($_POST["password"]) && !empty($_POST["email"]) && ($this->usernameCheck($conn, $_POST["name"]) == 0)) {
             $name = $conn->quote($_POST["name"]);
             $password = $conn->quote($_POST["password"]);
             $email = $conn->quote($_POST["email"]);
-            $avatar = $conn->quote($_POST["avatar"]);
+            
             // $button = $conn->quote($_POST["reg"]);
-            $sql = "INSERT INTO users (name, password, email,avatar) VALUES ($name, $password, $email,$avatar)";
+            $sql = "INSERT INTO users (name, password, email) VALUES ($name, $password, $email)";
             $stmt = $conn->prepare($sql);
 
             $stmt->execute();

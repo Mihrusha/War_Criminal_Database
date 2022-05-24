@@ -25,12 +25,12 @@ if (
     # simple form validation
 
     $text = "name";
-    $location = "login.php";
+    $location = "Views\LoginView.php";
     $massage = "error";
     is_empty($name, $text, $location, $massage, "");
 
     $text = "password";
-    $location = "login.php";
+    $location = "Views\LoginView.php";
     $massage = "error";
     is_empty($password, $text, $location, $massage, "");
 
@@ -75,5 +75,5 @@ if (
 } 
 
 else {
-    header("Location:login.php");
+    header("./Views\LoginView.php");
 }

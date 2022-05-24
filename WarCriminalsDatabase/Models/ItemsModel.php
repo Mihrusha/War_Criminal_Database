@@ -129,7 +129,7 @@ class Item
         
 
             $name = $conn->quote($method);
-        $sql = "SELECT surname,name, description, photo,files FROM pokidky WHERE surname = $name";
+        $sql = "SELECT surname,name, description, photo,files FROM pokidky WHERE surname = $name ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -152,7 +152,7 @@ class Item
     function get_from_category($conn,$method)
     {
         $name = $conn->quote($method);
-        $sql = "SELECT pokidky.name,pokidky.photo,pokidky.description FROM pokidky,category WHERE pokidky.category_id=category.id AND category.name=$name";
+        $sql = "SELECT pokidky.surname,pokidky.name,pokidky.photo,pokidky.description FROM pokidky,category WHERE pokidky.category_id=category.id AND category.name=$name";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
