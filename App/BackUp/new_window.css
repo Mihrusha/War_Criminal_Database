@@ -1,0 +1,54 @@
+/* .card-img {
+  padding-top: 20px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height:30%;
+  background-color: aliceblue;
+
+} */
+
+.container border border-success
+{
+  position: absolute;
+  width: 100%;
+  left: 0;
+} 
+/* .about p {
+  margin: 2px;
+  text-indent: 3rem;
+  text-align: justify;
+} */
+.col-md-4 {
+  /* width: 20%;
+      height: 20%; */
+      float:left;
+}
+
+.img-left  {
+  /* width: 300px;
+      height: 300px;
+      /* object-fit: cover; */
+      float:left;
+
+  /* margin-bottom: 0; */
+}
+
+.description {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+.box {
+  float: left;
+  margin-left: 11%;
+
+  padding: 20px;
+  text-align: left;
+  align-self: left;
+  margin-top: 0;
+  position: absolute;
+}

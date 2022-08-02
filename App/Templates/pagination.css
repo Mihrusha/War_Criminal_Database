@@ -1,0 +1,13 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .pagination a, .pagination span  {
+    text-decoration: none;
+    padding: 5px;
+    border: 1px solid #777
+  }
+  
+  
