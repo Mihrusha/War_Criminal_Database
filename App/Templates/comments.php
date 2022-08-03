@@ -28,18 +28,13 @@ $result = $comment->getMassage( $comment->id);
                 <div class="col-lg-6 m-2">
                     <div class="card">
                         <div class="comment-widgets">
-                            <!-- Comment Row -->
-
-                            <div class="d-flex flex-row comment-row">
+                             <div class="d-flex flex-row comment-row">
                                 <div class="p-2"><img src="App/photos/<?= $elem['avatar'] ?>" alt="user" width="90" class="rounded-circle"></div>
                                 <div class="comment-text w-100">
                                     <h6 class="font-medium"><?= $elem['name'] ?></h6> <span class="m-b-15 d-block"><?= $elem['massage'] ?></span>
-                                    <!-- <div class="comment-footer">
-                                           
-                                        </div> -->
                                 </div>
                             </div>
-                        </div> <!-- Card -->
+                        </div> 
                     </div>
                 </div>
             </div>

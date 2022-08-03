@@ -5,11 +5,11 @@ use App\Models\Pokidky;
 
 include_once "C:/xampp/htdocs/WarCriminalsDatabase/vendor/autoload.php";
 
-$pokidky = new Pokidky;
+$pokidky_eng = new Pokidky;
 $one;
 $comment = new Comments;
 
-$one = $pokidky->getOne();
+$one = $pokidky_eng->getOneEng();
 if (isset($_POST['id'])) {
     $answer = $comment->getMassage($_POST['id']);
 }

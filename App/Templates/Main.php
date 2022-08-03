@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous">
     <script src="https://use.fontawesome.com/6d3c048c3c.js"></script>
-    <title>Pokidky</title>
+    <title>Pokidky Database</title>
 </head>
 
 <header>
@@ -23,6 +23,8 @@
 
 
             <a class="navbar-brand" href="index.php">Home</a>
+
+            <a class="navbar-brand" href="App\View\Login.php">Login</a>
 
             <form class="form">
 
@@ -58,9 +60,6 @@
     <div class='row'>
         <div class='col-2'>
             <div class='container '>
-
-
-
                 <div id="donate-button-container ">
                     <div class="container p-3" id="donate-button">
                         <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
@@ -76,16 +75,13 @@
                             }).render('#donate-button');
                         </script>
                     </div>
-
                 </div>
                 <div class='container p-3'>Etherium Wallet
                     <input type="text" value='0xf4f42ffdad47d9a08656e21218755f5f1a79b14c'>
                 </div>
                 <div class='container p-3'>
                     <a href="https://rarible.com/token/0xB66a603f4cFe17e3D27B87a8BfCaD319856518B8:110795776959316314362858015915848074665765050005296289235527530973959672561665?tab=owners">NFT_Token</a>
-
                 </div>
-
                 <div class='container p-3'>
                     <a href="https://myrotvorets.center/">Миротворець.Частину інфи беру звідси</a>
                 </div>
@@ -95,32 +91,33 @@
         <div class='col-md-10' id='msg'>
             <section class="details-card">
                 <div class="container">
-
                     <div class="row" id='jar'>
                         <?php
                         foreach ($data as $pokidyok) { ?>
                             <div class="col-md-3 content">
                                 <div class="card-content">
-                                    <p class="btn btn-card border-2" id = 'nameBtn'>
+                                    <p class="btn btn-card border-2" id='nameBtn'>
                                         <?php foreach ($category as $row) {
                                             if ($row['id'] == $pokidyok['category_id'])
                                                 echo $row['name'];
                                         }  ?>
                                     </p>
+
+
                                     <div class="card-img">
-                                        <img class='picture' width="" src="photos/<?= $pokidyok['photo'] ?>">
+                                        <img class='picture' width="" src="App\photos/<?= $pokidyok['photo'] ?>">
 
                                     </div>
                                     <div class="card-desc">
-                                        <h3> <?= $pokidyok['surname'] ?><?= $pokidyok['name'] ?></h3>
+                                        <h3> <?= $pokidyok['surname'] ?> <?= $pokidyok['name'] ?></h3>
                                         <!-- <?php $rest = substr("{$pokidyok['description']}", 0, 25) ?>
                                         <?php echo "<p>{$rest}</p>" ?> -->
-
-
                                         <form method='post'>
                                             <input type='hidden' name='name' value='<?= $pokidyok['surname'] ?> ' />
                                             <!-- <input type='hidden' name='read' value='read' /> -->
-                                            <button type="button" name='read' id='read' class="btn btn-card border-2" value="<?= $pokidyok['id'] ?>">READ</button>
+                                            <button type="button" name='read' id='read' class="btn btn-card border-2 " value="<?= $pokidyok['id'] ?>">READ</button>
+                                            <button type="button" name='read_en' id='read_en' class="btn btn-card border-2 " value="<?= $pokidyok['id'] ?>">READ</button>
+                                            
                                         </form>
                                     </div>
                                 </div>
@@ -192,6 +189,26 @@
                 },
                 success: function(result) {
                     $("#result").load('App/Templates/Article.php'),
+                        $('#msg').html(result);
+
+                }
+            })
+
+        })
+
+
+        $("[id='read_en']").click(function() {
+            var id = $(this).val();
+           
+            $.ajax({
+                type: 'post',
+                url: 'App/Templates/EngArticle.php',
+                data: {
+
+                    id: id
+                },
+                success: function(result) {
+                    $("#result").load('App/Templates/EngArticle.php'),
                         $('#msg').html(result);
 
                 }
