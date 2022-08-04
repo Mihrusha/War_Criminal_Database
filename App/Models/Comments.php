@@ -47,7 +47,7 @@ class Comments
     public  function getAll()
     {
         
-        $sql = "SELECT name, massage, pok_id, avatar FROM  massages";
+        $sql = "SELECT id,name, massage, pok_id, avatar FROM  massages";
       
         $stmt = $this->db->conn->prepare($sql);
         $stmt->execute();

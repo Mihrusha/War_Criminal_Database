@@ -131,4 +131,67 @@ class Pokidky
 
         $conn = null;
     }
+
+
+    function editUkr()
+    {
+        if (!empty($_POST["ukr_surname"])) {
+        $id = $this->db->conn->quote($_POST["ukr_id"]);
+        $surname = $this->db->conn->quote($_POST["ukr_surname"]);
+        $name = $this->db->conn->quote($_POST["ukr_name"]);
+        $photo = $this->db->conn->quote($_POST["ukr_photo"]);
+        $description = $this->db->conn->quote($_POST["ukr_description"]);
+        $category_id = $this->db->conn->quote($_POST["ukr_category_id"]);
+        $files = $this->db->conn->quote($_POST["ukr_files"]);
+        $sql = "UPDATE  pokidky SET pokidky.surname=$surname,pokidky.name=$name, pokidky.description=$description, pokidky.category_id=$category_id,
+        pokidky.photo=$photo,pokidky.files=$files 
+        WHERE pokidky.id = $id";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+        }
+
+        
+    }
+
+    function editEng()
+    {
+        if (!empty($_POST["en_surname"])) {
+        $id = $this->db->conn->quote($_POST["en_id"]);
+        $surname = $this->db->conn->quote($_POST["en_surname"]);
+        $name = $this->db->conn->quote($_POST["en_name"]);
+        $photo = $this->db->conn->quote($_POST["en_photo"]);
+        $description = $this->db->conn->quote($_POST["en_description"]);
+        $category_id = $this->db->conn->quote($_POST["en_category_id"]);
+        $files = $this->db->conn->quote($_POST["en_files"]);
+        $sql = "UPDATE  pokidky_eng SET pokidky_eng.surname=$surname,pokidky_eng.name=$name, pokidky_eng.description=$description, pokidky_eng.category_id=$category_id,
+        pokidky_eng.photo=$photo,pokidky_eng.files=$files 
+        WHERE pokidky_eng.id = $id";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+        }
+
+        
+    }
+
+    function deleteUkr()
+    {
+        $userid = $this->db->conn->quote($_POST["delete_id"]);
+        $sql = "DELETE FROM pokidky WHERE id = $userid";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+
+
+        $conn = null;
+    }
+
+    function deleteEng()
+    {
+        $userid = $this->db->conn->quote($_POST["delete_en"]);
+        $sql = "DELETE FROM pokidky_eng WHERE id = $userid";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+
+
+        $conn = null;
+    }
 }

@@ -13,7 +13,7 @@
 </head>
 
 <body>
-
+<!-- ***************ADD ENGLISH MODAL************** -->
     <div class="modal" tabindex="-1" id='addEng'>
         <div class="modal-dialog">
             <div class="modal-content">
@@ -55,11 +55,12 @@
         </div>
     </div>
 
+    <!-- ***************ADD UKRAINE MODAL************** -->
     <div class="modal" tabindex="-1" id='addUkr'>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add Pokidyok(UKR)</h5>
+                    <h5 class="modal-title">Додати покидька(UKR)</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -89,14 +90,100 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
                     <button type="button" class="btn btn-primary" id='saveUkr' name='saveUkr'>Зберегти зміни</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- ***************EDIT UKRAINE MODAL************** -->
+    <div class="modal" tabindex="-1" id='editUkr'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Змінити покидька(UKR)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <input type="text" id='ukrId' name ='ukrId'>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="first-name" class="col-form-label"> Name:</label>
+                        <input type="text" name="name_ukr" id="name_ukr" class="form-control" value="" maxlength="50" >
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name" class="col-form-label"> Surname:</label>
+                        <input type="text" name="surname_ukr" id="surname_ukr" class="form-control" value="" maxlength="50" >
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name" class="col-form-label"> Description:</label>
+                        <textarea rows="" cols="" type="text" name="descr_ukr" id="descr_ukr" class="form-control" value="" ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name" class="col-form-label"> Category_id:</label>
+                        <input type="text" name="cat_id_ukr" id="cat_id_ukr" class="form-control" value="" maxlength="50" >
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name" class="col-form-label"> photo:</label>
+                        <input type="text" name="pho_ukr" id="pho_ukr" class="form-control" value="" maxlength="50" >
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name" class="col-form-label"> files:</label>
+                        <input type="text" name="file_ukr" id="file_ukr" class="form-control" value="" maxlength="50" >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+                    <button type="button" class="btn btn-primary" id='updateUkr' name='updateUkr'>Зберегти зміни</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+<!-- ****************EDIT ENGLISH MODAL********** -->
+    <div class="modal" tabindex="-1" id='editEng'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Change Bastard(ENG)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <input type="text" id='engId' name ='engId'>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="first-name" class="col-form-label"> Name:</label>
+                        <input type="text" name="name_ukr" id="name_eng" class="form-control" value="" maxlength="50" >
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name" class="col-form-label"> Surname:</label>
+                        <input type="text" name="surname_eng" id="surname_eng" class="form-control" value="" maxlength="50" >
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name" class="col-form-label"> Description:</label>
+                        <textarea rows="" cols="" type="text" name="descr_eng" id="descr_eng" class="form-control" value="" ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name" class="col-form-label"> Category_id:</label>
+                        <input type="text" name="cat_id_eng" id="cat_id_eng" class="form-control" value="" maxlength="50" >
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name" class="col-form-label"> photo:</label>
+                        <input type="text" name="pho_eng" id="pho_eng" class="form-control" value="" maxlength="50" >
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name" class="col-form-label"> files:</label>
+                        <input type="text" name="file_eng" id="file_eng" class="form-control" value="" maxlength="50" >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id='updateEng' name='updateUkr'>Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
