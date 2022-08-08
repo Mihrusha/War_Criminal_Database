@@ -26,8 +26,6 @@ echo '<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="curre
 
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 

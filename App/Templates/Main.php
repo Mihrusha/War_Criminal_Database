@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="App\Templates\main.css">
+    <link rel="stylesheet" href="App\Templates\main.css?v=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
@@ -34,16 +34,28 @@
                     <div class='col'>
                         <select class="form-select" aria-label="Default select example" id="role" name='role'>
                             <option selected value="no">Set Category</option>
-                            <option value="Admin">War criminals</option>
-                            <option value="User">Collaborants</option>
-                            <option value="User">Public Persons</option>
+                            <option value="War criminals">War criminals</option>
+                            <option value="Collaborants">Collaborants</option>
+                            <option value="Public Persons">Public Persons</option>
                         </select>
                     </div>
                     <div class='col'>
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" name='search' id='search' aria-label="Search">
                     </div>
                     <div class='col'>
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchBtn" name='searchBtn'>Search</button>
+                    </div>
+                    <div class='col'>
+                        <div class='form-group'>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="leng" id="leng" value="1">
+                                <label class="form-check-label" for="">UKR</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="leng" id="leng" value="2">
+                                <label class="form-check-label" for="">ENG</label>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -115,9 +127,9 @@
                                         <form method='post'>
                                             <input type='hidden' name='name' value='<?= $pokidyok['surname'] ?> ' />
                                             <!-- <input type='hidden' name='read' value='read' /> -->
-                                            <button type="button" name='read' id='read' class="btn btn-card border-2 " value="<?= $pokidyok['id'] ?>">READ</button>
-                                            <button type="button" name='read_en' id='read_en' class="btn btn-card border-2 " value="<?= $pokidyok['id'] ?>">READ</button>
-                                            
+                                            <button type="button" name='read' id='read' class="btn btn-card border-2 " value="<?= $pokidyok['id'] ?>">UKR</button>
+                                            <button type="button" name='read_en' id='read_en' class="btn btn-card border-2 " value="<?= $pokidyok['id'] ?>">ENG</button>
+
                                         </form>
                                     </div>
                                 </div>
@@ -171,10 +183,19 @@
         })
 
         $("[id='read']").mousemove(function() {
-            $(this).css('background-color', 'red');
+            $(this).css('background-color', 'yellow');
         })
         $("[id='read']").mouseout(function() {
-            $(this).css('background-color', '#1ABC9C');
+            $(this).css('background-color', '#1655d1');
+        })
+
+
+        $("[id='read_en']").mousemove(function() {
+            $(this).css('background-color', 'black');
+            $(this).css('color', 'white');
+        })
+        $("[id='read_en']").mouseout(function() {
+            $(this).css('background-color', 'red');
         })
 
         $("[id='read']").click(function() {
@@ -199,7 +220,7 @@
 
         $("[id='read_en']").click(function() {
             var id = $(this).val();
-           
+
             $.ajax({
                 type: 'post',
                 url: 'App/Templates/EngArticle.php',
@@ -214,6 +235,73 @@
                 }
             })
 
+        })
+
+        $("[id='searchBtn']").click(function() {
+            var surname = $('#search').val();
+            var leng = [];
+            $(".form-check-input:checked").each(function() {
+                leng.push($(this).val());
+                element = this;
+            })
+            // var leng = $("[name='leng']").val();
+
+            if (leng == 1) {
+                url = 'App/Templates/Article.php';
+            }
+
+            if (leng == 2) {
+                url = 'App/Templates/EngArticle.php';
+            }
+
+
+            $.ajax({
+                type: 'post',
+                url: url,
+                data: {
+                    by_name: 'by_name',
+                    surname: surname
+                },
+                success: function(result) {
+                    $("#result").load(url),
+                        $('#msg').html(result);
+
+                }
+
+            })
+            return false;
+        })
+
+        $('#role').change(function() {
+            var cat = $('#role').val();
+            var leng = [];
+            $(".form-check-input:checked").each(function() {
+                leng.push($(this).val());
+                element = this;
+            })
+            if (leng == 1) {
+                url = 'App/Templates/CategoryUkr.php';
+            }
+
+            if (leng == 2) {
+                url = 'App/Templates/EngArticle.php';
+            }
+
+            $.ajax({
+                type: 'post',
+                url: url,
+                data: {
+                    cat_name: 'cat_name',
+                    cat: cat
+                },
+                success: function(result) {
+                    $("#result").load(url),
+                        $('#msg').html(result);
+
+                }
+
+            })
+            return false;
         })
     </script>
 </body>

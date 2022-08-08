@@ -115,6 +115,41 @@ class Pokidky
         $conn = null;
     }
 
+    function getOneName()
+    {
+        $surname = $this->db->conn->quote($_POST["surname"]);
+        $sql = "SELECT id, name,surname, description, photo,files FROM pokidky WHERE surname=$surname";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $item = $stmt->fetchAll();
+        } else {
+            $item = 0;
+        }
+
+        return $item;
+
+        $conn = null;
+    }
+
+    function getOneNameEng()
+    {
+        $surname = $this->db->conn->quote($_POST["surname"]);
+        $sql = "SELECT id, name,surname, description, photo,files FROM pokidky_eng WHERE surname=$surname";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $item = $stmt->fetchAll();
+        } else {
+            $item = 0;
+        }
+
+        return $item;
+
+        $conn = null;
+    }
+
+
     function getOneEng()
     {
         $id = $this->db->conn->quote($_POST["id"]);
@@ -136,41 +171,37 @@ class Pokidky
     function editUkr()
     {
         if (!empty($_POST["ukr_surname"])) {
-        $id = $this->db->conn->quote($_POST["ukr_id"]);
-        $surname = $this->db->conn->quote($_POST["ukr_surname"]);
-        $name = $this->db->conn->quote($_POST["ukr_name"]);
-        $photo = $this->db->conn->quote($_POST["ukr_photo"]);
-        $description = $this->db->conn->quote($_POST["ukr_description"]);
-        $category_id = $this->db->conn->quote($_POST["ukr_category_id"]);
-        $files = $this->db->conn->quote($_POST["ukr_files"]);
-        $sql = "UPDATE  pokidky SET pokidky.surname=$surname,pokidky.name=$name, pokidky.description=$description, pokidky.category_id=$category_id,
+            $id = $this->db->conn->quote($_POST["ukr_id"]);
+            $surname = $this->db->conn->quote($_POST["ukr_surname"]);
+            $name = $this->db->conn->quote($_POST["ukr_name"]);
+            $photo = $this->db->conn->quote($_POST["ukr_photo"]);
+            $description = $this->db->conn->quote($_POST["ukr_description"]);
+            $category_id = $this->db->conn->quote($_POST["ukr_category_id"]);
+            $files = $this->db->conn->quote($_POST["ukr_files"]);
+            $sql = "UPDATE  pokidky SET pokidky.surname=$surname,pokidky.name=$name, pokidky.description=$description, pokidky.category_id=$category_id,
         pokidky.photo=$photo,pokidky.files=$files 
         WHERE pokidky.id = $id";
-        $stmt = $this->db->conn->prepare($sql);
-        $stmt->execute();
+            $stmt = $this->db->conn->prepare($sql);
+            $stmt->execute();
         }
-
-        
     }
 
     function editEng()
     {
         if (!empty($_POST["en_surname"])) {
-        $id = $this->db->conn->quote($_POST["en_id"]);
-        $surname = $this->db->conn->quote($_POST["en_surname"]);
-        $name = $this->db->conn->quote($_POST["en_name"]);
-        $photo = $this->db->conn->quote($_POST["en_photo"]);
-        $description = $this->db->conn->quote($_POST["en_description"]);
-        $category_id = $this->db->conn->quote($_POST["en_category_id"]);
-        $files = $this->db->conn->quote($_POST["en_files"]);
-        $sql = "UPDATE  pokidky_eng SET pokidky_eng.surname=$surname,pokidky_eng.name=$name, pokidky_eng.description=$description, pokidky_eng.category_id=$category_id,
+            $id = $this->db->conn->quote($_POST["en_id"]);
+            $surname = $this->db->conn->quote($_POST["en_surname"]);
+            $name = $this->db->conn->quote($_POST["en_name"]);
+            $photo = $this->db->conn->quote($_POST["en_photo"]);
+            $description = $this->db->conn->quote($_POST["en_description"]);
+            $category_id = $this->db->conn->quote($_POST["en_category_id"]);
+            $files = $this->db->conn->quote($_POST["en_files"]);
+            $sql = "UPDATE  pokidky_eng SET pokidky_eng.surname=$surname,pokidky_eng.name=$name, pokidky_eng.description=$description, pokidky_eng.category_id=$category_id,
         pokidky_eng.photo=$photo,pokidky_eng.files=$files 
         WHERE pokidky_eng.id = $id";
-        $stmt = $this->db->conn->prepare($sql);
-        $stmt->execute();
+            $stmt = $this->db->conn->prepare($sql);
+            $stmt->execute();
         }
-
-        
     }
 
     function deleteUkr()
@@ -194,4 +225,40 @@ class Pokidky
 
         $conn = null;
     }
+
+    function GetbySurname($method)
+    {
+        $name = $this->db->conn->quote($method);
+        $sql = "SELECT surname,name, description, photo,files FROM pokidky WHERE surname = $name ";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $item = $stmt->fetchAll();
+        } else {
+            $item = 0;
+        }
+
+        return $item;
+    }
+
+
+    function get_from_category_Ukr($method)
+    {
+        $name = $this->db->conn->quote($method);
+        $sql = "SELECT pokidky.surname,pokidky.name,pokidky.photo,pokidky.description FROM pokidky,category WHERE pokidky.category_id=category.id AND category.name=$name";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $item = $stmt->fetchAll();
+        } else {
+            $item = 0;
+        }
+
+        return $item;
+
+        //return $row['description'] . "\t";
+
+        $conn = null;
+    }
+
 }

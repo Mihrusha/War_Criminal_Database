@@ -14,9 +14,9 @@ if (isset($_POST['id'])) {
     $answer = $comment->getMassage($_POST['id']);
 }
 
-// if(isset($_POST['pok_id'])){
-//     $answer = $comment->getMassage($_POST['pok_id']);
-// }
+if (isset($_POST['by_name'])) {
+    $one = $pokidky_eng->getOneNameEng();
+}
 
 
 ?>
