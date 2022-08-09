@@ -244,8 +244,27 @@ class Pokidky
 
     function get_from_category_Ukr($method)
     {
-        $name = $this->db->conn->quote($method);
-        $sql = "SELECT pokidky.surname,pokidky.name,pokidky.photo,pokidky.description FROM pokidky,category WHERE pokidky.category_id=category.id AND category.name=$name";
+        // $name = $this->db->conn->quote($method);
+        $sql = "SELECT pokidky.id,pokidky.surname,pokidky.name,pokidky.photo,pokidky.description FROM pokidky,category WHERE pokidky.category_id=category.id AND category.name='$method'";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $item = $stmt->fetchAll();
+        } else {
+            $item = 0;
+        }
+
+        return $item;
+
+        //return $row['description'] . "\t";
+
+        $conn = null;
+    }
+
+    function get_from_category_Eng($method)
+    {
+        // $name = $this->db->conn->quote($method);
+        $sql = "SELECT pokidky_eng.id,pokidky_eng.surname,pokidky_eng.name,pokidky_eng.photo,pokidky_eng.description FROM pokidky_eng,category WHERE pokidky_eng.category_id=category.id AND category.name='$method'";
         $stmt = $this->db->conn->prepare($sql);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {

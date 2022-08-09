@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="App\Templates\main.css?v=1">
+    <link rel="stylesheet" href="App\Templates\main.css?v=5">
+    <link rel="stylesheet" href="App\Templates\sidebar.css?v=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
@@ -19,7 +20,89 @@
 
 <header>
     <div class="container lg w-100 align-middle">
-        <nav class="navbar navbar-light bg-light justify-content-between">
+
+        <div class='header'>
+
+            <nav class="navbar navbar-expand-lg navbar-light" id='shapka'>
+                <h1> Pokidky Database</h1>
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.php">
+                                    <h3>Home</h3>
+                                </a>
+
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="App\View\Login.php">
+                                    <h3>Login</h3>
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                                <form class="d-flex" method='POST'>
+                                    <input type='hidden' name='New' value='New' />
+                                    <a class="nav-link" href='Views\NewUser_View.php' name='New' value='New'>
+                                        <h3>New User</h3>
+                                    </a>
+                                </form>
+
+                            </li> -->
+                            <li class='nav-item'>
+                                <div class='container'>
+                                    <div class='form-group'>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="leng" id="leng" value="1">
+                                            <label class="form-check-label" for="">UKR</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="leng" id="leng" value="2">
+                                            <label class="form-check-label" for="">ENG</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li class="nav-item">
+                                <div class='form-group'>
+                                    <div class='row'>
+                                        <div class='col'>
+                                            <input class="form-control mr-sm-2" type="search" placeholder="Search" name='search' id='search' aria-label="Search">
+                                        </div>
+                                        <div class='col'>
+                                            <button class="btn btn-outline-success " type="submit" id="searchBtn" name='searchBtn'>Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <div class='form-group'>
+                                    <select class="form-select" aria-label="Default select example" id="role" name='role'>
+                                        <option selected value="no">Set Category</option>
+                                        <option value="War Criminal">War criminals</option>
+                                        <option value="Collaborant">Collaborants</option>
+                                        <option value="Public Person">Public Persons</option>
+                                    </select>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- <nav class="navbar navbar-light bg-light justify-content-between">
 
 
             <a class="navbar-brand" href="index.php">Home</a>
@@ -31,21 +114,7 @@
 
                 <div class='row'>
 
-                    <div class='col'>
-                        <select class="form-select" aria-label="Default select example" id="role" name='role'>
-                            <option selected value="no">Set Category</option>
-                            <option value="War criminals">War criminals</option>
-                            <option value="Collaborants">Collaborants</option>
-                            <option value="Public Persons">Public Persons</option>
-                        </select>
-                    </div>
-                    <div class='col'>
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" name='search' id='search' aria-label="Search">
-                    </div>
-                    <div class='col'>
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchBtn" name='searchBtn'>Search</button>
-                    </div>
-                    <div class='col'>
+                    <div class='col-2'>
                         <div class='form-group'>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="leng" id="leng" value="1">
@@ -58,10 +127,26 @@
                         </div>
                     </div>
 
+                    <div class='col-4'>
+                        <select class="form-select" aria-label="Default select example" id="role" name='role'>
+                            <option selected value="no">Set Category</option>
+                            <option value="War Criminal">War criminals</option>
+                            <option value="Collaborant">Collaborants</option>
+                            <option value="Public Person">Public Persons</option>
+                        </select>
+                    </div>
+                    <div class='col'>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" name='search' id='search' aria-label="Search">
+                    </div>
+                    <div class='col'>
+                        <button class="btn btn-outline-success " type="submit" id="searchBtn" name='searchBtn'>Search</button>
+                    </div>
+
+
 
                 </div>
             </form>
-        </nav>
+        </nav> -->
 
     </div>
 
@@ -70,7 +155,10 @@
 <body>
 
     <div class='row'>
-        <div class='col-2'>
+
+
+
+        <div class='col-2 m-0' id='side' style='display:none'>
             <div class='container '>
                 <div id="donate-button-container ">
                     <div class="container p-3" id="donate-button">
@@ -92,15 +180,17 @@
                     <input type="text" value='0xf4f42ffdad47d9a08656e21218755f5f1a79b14c'>
                 </div>
                 <div class='container p-3'>
-                    <a href="https://rarible.com/token/0xB66a603f4cFe17e3D27B87a8BfCaD319856518B8:110795776959316314362858015915848074665765050005296289235527530973959672561665?tab=owners">NFT_Token</a>
+
+                    <a href="https://rarible.com/token/0xB66a603f4cFe17e3D27B87a8BfCaD319856518B8:110795776959316314362858015915848074665765050005296289235527530973959672561665?tab=owners" class='btn btn-warning'>NFT_Token</a>
                 </div>
                 <div class='container p-3'>
-                    <a href="https://myrotvorets.center/">Миротворець.Частину інфи беру звідси</a>
+                    <a href="https://myrotvorets.center/" class='btn btn-warning'>Миротворець</a>
                 </div>
             </div>
         </div>
 
-        <div class='col-md-10' id='msg'>
+        <div class='col-9' id='msg'>
+            <button class='btn btn-warning' id='links'>Links</button>
             <section class="details-card">
                 <div class="container">
                     <div class="row" id='jar'>
@@ -175,6 +265,11 @@
 
     <script src="App\Templates\pagination.js"></script>
     <script>
+        $('#links').click(function() {
+            $('#side').css('display','block');
+            
+        })
+
         $("[id='nameBtn']").mousemove(function() {
             $(this).css('background-color', 'red');
         })
@@ -184,18 +279,30 @@
 
         $("[id='read']").mousemove(function() {
             $(this).css('background-color', 'yellow');
+            $(this).css('color', 'blue');
+
+            $(this).siblings().css('background-color', '#1655d1');
+            $(this).siblings().css('color', 'white');
         })
         $("[id='read']").mouseout(function() {
             $(this).css('background-color', '#1655d1');
+            $(this).css('color', 'white');
+            $(this).siblings().css('background-color', 'yellow');
+            $(this).siblings().css('color', '#1655d1');
         })
 
 
         $("[id='read_en']").mousemove(function() {
-            $(this).css('background-color', 'black');
+            $(this).css('background-color', '#1655d1');
             $(this).css('color', 'white');
+            $(this).siblings().css('background-color', 'yellow');
+            $(this).siblings().css('color', '#1655d1');
         })
         $("[id='read_en']").mouseout(function() {
-            $(this).css('background-color', 'red');
+            $(this).css('background-color', 'yellow');
+            $(this).css('color', 'blue');
+            $(this).siblings().css('background-color', '#1655d1');
+            $(this).siblings().css('color', 'white');
         })
 
         $("[id='read']").click(function() {
@@ -284,7 +391,7 @@
             }
 
             if (leng == 2) {
-                url = 'App/Templates/EngArticle.php';
+                url = 'App/Templates/CategoryEng.php';
             }
 
             $.ajax({

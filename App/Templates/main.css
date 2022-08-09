@@ -1,4 +1,11 @@
 
+#shapka{
+    background-color: rgb(154, 216, 215);
+}
+
+#side{
+    background-color: #85bea1;
+}
 
 #nameBtn{
     background-color: #1ABC9C;
@@ -6,10 +13,12 @@
 
 #read{
     background-color: #1655d1;
+    color: white;
 }
 
 #read_en{
-    background-color: red;
+    background-color: yellow;
+    color:blue;
 }
 
 section{

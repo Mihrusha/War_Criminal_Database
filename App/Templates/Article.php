@@ -11,6 +11,7 @@ $comment = new Comments;
 
 $one = $pokidky->getOne();
 if (isset($_POST['id'])) {
+   
     $answer = $comment->getMassage($_POST['id']);
 }
 

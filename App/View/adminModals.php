@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
@@ -13,7 +14,7 @@
 </head>
 
 <body>
-<!-- ***************ADD ENGLISH MODAL************** -->
+    <!-- ***************ADD ENGLISH MODAL************** -->
     <div class="modal" tabindex="-1" id='addEng'>
         <div class="modal-dialog">
             <div class="modal-content">
@@ -24,27 +25,27 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Name:</label>
-                        <input type="text" name="pok_name" id="pok_name" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="pok_name" id="pok_name" class="form-control" value="" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Surname:</label>
-                        <input type="text" name="pok_surname" id="pok_surname" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="pok_surname" id="pok_surname" class="form-control" value="" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Description:</label>
-                        <textarea rows="" cols="" type="text" name="description" id="description" class="form-control" value="" ></textarea>
+                        <textarea rows="" cols="" type="text" name="description" id="description" class="description" value=""></textarea>
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Category_id:</label>
-                        <input type="number" name="category_id" id="category_id" class="form-control" value="" maxlength="50" >
+                        <input type="number" name="category_id" id="category_id" class="form-control" value="" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> photo:</label>
-                        <input type="text" name="photo" id="photo" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="photo" id="photo" class="form-control" value="" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> files:</label>
-                        <input type="text" name="files" id="files" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="files" id="files" class="form-control" value="" maxlength="50">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -66,27 +67,27 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Name:</label>
-                        <input type="text" name="name" id="name" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="name" id="name" class="form-control" value="" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Surname:</label>
-                        <input type="text" name="surname" id="surname" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="surname" id="surname" class="form-control" value="" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Description:</label>
-                        <textarea rows="" cols="" type="text" name="description_ukr" id="description_ukr" class="form-control" value="" ></textarea>
+                        <textarea rows="" cols="" type="text" name="description_ukr"  id="description_ukr" class="description" value=""></textarea>
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Category_id:</label>
-                        <input type="number" name="category_id_ukr" id="category_id_ukr" class="form-control" value="" maxlength="50" >
+                        <input type="number" name="category_id_ukr" id="category_id_ukr" class="form-control" value="" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> photo:</label>
-                        <input type="text" name="photo_ukr" id="photo_ukr" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="photo_ukr" id="photo_ukr" class="form-control" value="" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> files:</label>
-                        <input type="text" name="files_ukr" id="files_ukr" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="files_ukr" id="files_ukr" class="form-control" value="" maxlength="50">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -105,32 +106,32 @@
                     <h5 class="modal-title">Змінити покидька(UKR)</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <input type="text" id='ukrId' name ='ukrId'>
+                <input type="text" id='ukrId' name='ukrId'>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Name:</label>
-                        <input type="text" name="name_ukr" id="name_ukr" class="form-control" value="" maxlength="50" >
-                        
+                        <input type="text" name="name_ukr" id="name_ukr" class="form-control" value="" maxlength="50">
+
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Surname:</label>
-                        <input type="text" name="surname_ukr" id="surname_ukr" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="surname_ukr" id="surname_ukr" class="form-control" value="" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Description:</label>
-                        <textarea rows="" cols="" type="text" name="descr_ukr" id="descr_ukr" class="form-control" value="" ></textarea>
+                        <textarea rows="" cols="" type="text" name="descr_ukr" id="descr_ukr" class="description" value=""></textarea>
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Category_id:</label>
-                        <input type="text" name="cat_id_ukr" id="cat_id_ukr" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="cat_id_ukr" id="cat_id_ukr" class="form-control" value="" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> photo:</label>
-                        <input type="text" name="pho_ukr" id="pho_ukr" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="pho_ukr" id="pho_ukr" class="form-control" value="" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> files:</label>
-                        <input type="text" name="file_ukr" id="file_ukr" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="file_ukr" id="file_ukr" class="form-control" value="" maxlength="50">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -141,7 +142,7 @@
         </div>
     </div>
 
-<!-- ****************EDIT ENGLISH MODAL********** -->
+    <!-- ****************EDIT ENGLISH MODAL********** -->
     <div class="modal" tabindex="-1" id='editEng'>
         <div class="modal-dialog">
             <div class="modal-content">
@@ -149,32 +150,32 @@
                     <h5 class="modal-title">Change Bastard(ENG)</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <input type="text" id='engId' name ='engId'>
+                <input type="text" id='engId' name='engId'>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Name:</label>
-                        <input type="text" name="name_ukr" id="name_eng" class="form-control" value="" maxlength="50" >
-                        
+                        <input type="text" name="name_ukr" id="name_eng" class="form-control" value="" maxlength="50">
+
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Surname:</label>
-                        <input type="text" name="surname_eng" id="surname_eng" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="surname_eng" id="surname_eng" class="form-control" value="" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Description:</label>
-                        <textarea rows="" cols="" type="text" name="descr_eng" id="descr_eng" class="form-control" value="" ></textarea>
+                        <textarea rows="" cols="" type="text" name="descr_eng" id="descr_eng" class="description" value=""></textarea>
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Category_id:</label>
-                        <input type="text" name="cat_id_eng" id="cat_id_eng" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="cat_id_eng" id="cat_id_eng" class="form-control" value="" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> photo:</label>
-                        <input type="text" name="pho_eng" id="pho_eng" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="pho_eng" id="pho_eng" class="form-control" value="" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> files:</label>
-                        <input type="text" name="file_eng" id="file_eng" class="form-control" value="" maxlength="50" >
+                        <input type="text" name="file_eng" id="file_eng" class="form-control" value="" maxlength="50">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -185,5 +186,10 @@
         </div>
     </div>
 </body>
-
+<script>
+      tinymce.init({
+        selector: '.description',
+        
+      });
+    </script>
 </html>

@@ -3,10 +3,11 @@
 use App\Models\Pokidky;
 
 include_once "C:/xampp/htdocs/WarCriminalsDatabase/vendor/autoload.php";
-$pokidky = new Pokidky;
+$pokidky_eng = new Pokidky;
 
 if (isset($_POST['cat'])) {
-    $item = $pokidky->get_from_category_Ukr($_POST['cat']);
+
+    $item = $pokidky_eng->get_from_category_Eng($_POST['cat']);
 }
 // $item = $pokidky->get_from_category_Ukr('war_criminal');
 
@@ -67,8 +68,7 @@ echo '<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="curre
                                         <form action='../new_window.php' method='post'>
                                             <input type='hidden' name='name' value='<?= $pokidyok['name'] ?> ' />
                                             <!-- <input type='hidden' name='read' value='read' /> -->
-                                            <button type="button" name='read' id='read' class="btn btn-card border-2 " value="<?= $pokidyok['id'] ?>">UKR</button>
-                                            
+                                            <button type="button" name='read_en' id='read_en' class="btn btn-card border-2 " value="<?= $pokidyok['id'] ?>">ENG</button>
                                         </form>
 
 
@@ -99,7 +99,6 @@ echo '<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="curre
         </div>
 
     </div>
-
 
 
 
