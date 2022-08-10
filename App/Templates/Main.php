@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="App\Templates\main.css?v=9">
+    <link rel="stylesheet" href="App\Templates\main.css?v=10">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -19,33 +19,33 @@
 </head>
 
 <header>
-    <div class="container lg w-100 align-middle">
 
-        <div class='header'>
 
-            <nav class="navbar navbar-expand-lg navbar-light" id='shapka'>
-                <h1> Pokidky Database</h1>
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.php">
-                                    <h3>Home</h3>
-                                </a>
+    <div class='header' id='shapka'>
 
-                            </li>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <h1> Pokidky Database</h1>
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php">
+                                <h3>Home</h3>
+                            </a>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="App\View\Login.php">
-                                    <h3>Login</h3>
-                                </a>
-                            </li>
+                        </li>
 
-                            <!-- <li class="nav-item">
+                        <li class="nav-item">
+                            <a class="nav-link" href="App\View\Login.php">
+                                <h3>Login</h3>
+                            </a>
+                        </li>
+
+                        <!-- <li class="nav-item">
                                 <form class="d-flex" method='POST'>
                                     <input type='hidden' name='New' value='New' />
                                     <a class="nav-link" href='Views\NewUser_View.php' name='New' value='New'>
@@ -54,55 +54,55 @@
                                 </form>
 
                             </li> -->
-                            <li class='nav-item'>
-                                <div class='container'>
-                                    <div class='form-group'>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="leng" id="leng" value="1">
-                                            <label class="form-check-label" for="">UKR</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="leng" id="leng" value="2">
-                                            <label class="form-check-label" for="">ENG</label>
-                                        </div>
+                        <li class='nav-item'>
+                            <div class='container'>
+                                <div class='form-group'>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="leng" id="leng" value="1">
+                                        <label class="form-check-label" for="">UKR</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="leng" id="leng" value="2">
+                                        <label class="form-check-label" for="">ENG</label>
                                     </div>
                                 </div>
+                            </div>
 
-                            </li>
+                        </li>
 
-                            <li class="nav-item">
-                                <div class='form-group'>
-                                    <div class='row'>
-                                        <div class='col'>
-                                            <input class="form-control mr-sm-2" type="search" placeholder="Search" name='search' id='search' aria-label="Search">
-                                        </div>
-                                        <div class='col'>
-                                            <button class="btn btn-success " type="submit" id="searchBtn" name='searchBtn'>Search</button>
-                                        </div>
+                        <li class="nav-item">
+                            <div class='form-group'>
+                                <div class='row'>
+                                    <div class='col'>
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search" name='search' id='search' aria-label="Search">
+                                    </div>
+                                    <div class='col'>
+                                        <button class="btn btn-success " type="submit" id="searchBtn" name='searchBtn'>Search</button>
                                     </div>
                                 </div>
-                            </li>
+                            </div>
+                        </li>
 
 
-                            <li class="nav-item">
-                                <div class='form-group'>
-                                    <select class="form-select" aria-label="Default select example" id="role" name='role'>
-                                        <option selected value="no">Set Category</option>
-                                        <option value="War Criminal">War criminals</option>
-                                        <option value="Collaborant">Collaborants</option>
-                                        <option value="Public Person">Public Persons</option>
-                                    </select>
-                                </div>
-                            </li>
+                        <li class="nav-item">
+                            <div class='form-group'>
+                                <select class="form-select" aria-label="Default select example" id="role" name='role'>
+                                    <option selected value="no">Set Category</option>
+                                    <option value="War Criminal">War criminals</option>
+                                    <option value="Collaborant">Collaborants</option>
+                                    <option value="Public Person">Public Persons</option>
+                                </select>
+                            </div>
+                        </li>
 
-                        </ul>
+                    </ul>
 
-                    </div>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
+    </div>
 
-        <!-- <nav class="navbar navbar-light bg-light justify-content-between">
+    <!-- <nav class="navbar navbar-light bg-light justify-content-between">
 
 
             <a class="navbar-brand" href="index.php">Home</a>
@@ -148,11 +148,11 @@
             </form>
         </nav> -->
 
-    </div>
+
 
 </header>
 
-<body>
+<body class='bg-light'>
 
     <div class='row'>
 
@@ -207,16 +207,17 @@
 
 
 
-        <div class='col-9' id='msg'>
+        <div class='col-9 bg-light ' id='msg'>
 
-            <section class="details-card">
-                <div class="container h-100 w-100" id='main'>
+            <section class="details-card" style="border:solid 2px">
+                <div class="container h-100 w-100 " id='main' style="border:solid 2px;">
                     <div class="row" id='jar'>
                         <?php
                         foreach ($data as $pokidyok) { ?>
                             <div class="col-lg-4 content " id='contant'>
 
                                 <div class="card w-100 h-100 mb-2" id='card'>
+                                    
                                     <p class="btn btn-card border-2" id='nameBtn'>
                                         <?php foreach ($category as $row) {
                                             if ($row['id'] == $pokidyok['category_id'])
@@ -276,8 +277,6 @@
             </div>
         </div>
     </div>
-
-
 
 
 
@@ -365,7 +364,7 @@
                 element = this;
             })
             // var leng = $("[name='leng']").val();
-            if(leng<1){
+            if (leng < 1) {
                 alert('Please choose lenguage')
             }
 
@@ -398,7 +397,7 @@
 
         $('#role').change(function() {
             var cat = $('#role').val();
-            if(cat=='no'){
+            if (cat == 'no') {
                 location.href = 'index.php';
             }
             var leng = [];
@@ -407,7 +406,7 @@
                 element = this;
             })
             // if (leng == 1) {
-                url = 'App/Templates/CategoryUkr.php';
+            url = 'App/Templates/CategoryUkr.php';
             // }
 
             // if (leng == 2) {

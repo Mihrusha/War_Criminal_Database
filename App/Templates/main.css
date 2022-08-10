@@ -1,16 +1,20 @@
 
 body{
-    background-image: url('../photos/flag.jpg');
+    /* background-image: url('../photos/flag.jpg'); */
     background-size:cover;
+    background-color: rgb(241, 218, 236);
+    
 }
 
 #shapka{
-   
+    background-color: rgb(218, 204, 215);
     /* background-image: url('../App/photos/flag.jpg'); */
+    width:100%;
 }
 
 #side{
     background-color: #85bea1;
+    display: none;
 }
 
 #nameBtn{
@@ -67,7 +71,6 @@ section{
     position: relative;
     display: block;
     
-   
     
 }
 

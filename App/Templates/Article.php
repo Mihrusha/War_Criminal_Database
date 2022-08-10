@@ -11,7 +11,7 @@ $comment = new Comments;
 
 $one = $pokidky->getOne();
 if (isset($_POST['id'])) {
-   
+
     $answer = $comment->getMassage($_POST['id']);
 }
 
@@ -46,23 +46,29 @@ if (isset($_POST['by_name'])) {
 </head>
 
 <body>
-    <div class='container' id='article_unit'>
+    <div class='container mt-2' id='article_unit'>
         <div class="container-xxl border border-success w-100 " id='article_top'>
-            <div class="row ">
-                <div class="col-md-3 mt-2 ">
-                    <img class='img-left ' width="" src="App/photos/<?= $row['photo'] ?> ">
-                </div> 
-                <div class="col-md-9">
-                    <div>
-                        <h3><?= $row['name'] ?> <?= $row['surname'] ?></h3>
+            <div class="row mt-2" id='row'>
+                <div class='card-body' id='card'>
+                    <div class='row'>
+                        <div class='col-lg-3 m'>
+                            <div class="col-md-3 mt-2 w-100" id='picture_dom'>
+                                <img class='img-left' id='picture' width="" src="App/photos/<?= $row['photo'] ?> ">
+                            </div>
+                        </div>
+                        <div class='col-lg-7'>
+                            <div>
+                                <h3><?= $row['name'] ?> <?= $row['surname'] ?></h3>
+                            </div>
+                            <div class='about text-justify'>
+                                <p class='text-justify'><?= $row['description'] ?></p>
+                            </div>
+                            <div>
+                                <p><a href="files/<?= $row['files'] ?>" download>Download Files</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class='about text-justify'>
-                        <p class='text-justify'><?= $row['description'] ?></p>
-                    </div>
-                    <div>
 
-                        <p><a href="files/<?= $row['files'] ?>" download>Download Files</a>
-                    </div>
                     <div class='col'>
                         <a href="/WarCriminalsDatabase/index.php" class="btn btn-success m-2">Back</a>
                     </div>

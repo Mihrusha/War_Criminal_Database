@@ -45,7 +45,7 @@ class Pokidky
             }
 
 
-            $conn = null;
+            $this->db->conn= null;
         }
     }
 
@@ -65,7 +65,7 @@ class Pokidky
             }
 
 
-            $conn = null;
+            $this->db->conn= null;
         }
     }
 
@@ -111,13 +111,14 @@ class Pokidky
         }
 
         return $item;
-
-        $conn = null;
+        $this->db->conn= null;
     }
 
     function getOneName()
     {
-        $surname = $this->db->conn->quote($_POST["surname"]);
+        $surname =$this->check_input($_POST["surname"]);
+        $surname = $this->db->conn->quote($surname);
+        
         $sql = "SELECT id, name,surname, description, photo,files FROM pokidky WHERE surname=$surname";
         $stmt = $this->db->conn->prepare($sql);
         $stmt->execute();
@@ -129,12 +130,14 @@ class Pokidky
 
         return $item;
 
-        $conn = null;
+        $this->db->conn= null;
     }
 
     function getOneNameEng()
     {
-        $surname = $this->db->conn->quote($_POST["surname"]);
+        $surname =$this->check_input($_POST["surname"]);
+        $surname = $this->db->conn->quote($surname);
+        
         $sql = "SELECT id, name,surname, description, photo,files FROM pokidky_eng WHERE surname=$surname";
         $stmt = $this->db->conn->prepare($sql);
         $stmt->execute();
@@ -146,7 +149,7 @@ class Pokidky
 
         return $item;
 
-        $conn = null;
+        $this->db->conn= null;
     }
 
 
@@ -164,7 +167,7 @@ class Pokidky
 
         return $item;
 
-        $conn = null;
+        $this->db->conn= null;
     }
 
 
@@ -212,7 +215,7 @@ class Pokidky
         $stmt->execute();
 
 
-        $conn = null;
+        $this->db->conn= null;
     }
 
     function deleteEng()
@@ -223,7 +226,7 @@ class Pokidky
         $stmt->execute();
 
 
-        $conn = null;
+        $this->db->conn= null;
     }
 
     function GetbySurname($method)
@@ -258,7 +261,7 @@ class Pokidky
 
         //return $row['description'] . "\t";
 
-        $conn = null;
+        $this->db->conn= null;
     }
 
     function get_from_category_Eng($method)
@@ -277,7 +280,14 @@ class Pokidky
 
         //return $row['description'] . "\t";
 
-        $conn = null;
+        $this->db->conn= null;
     }
+
+    public function check_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+      }
 
 }
