@@ -42,62 +42,44 @@ echo '<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="curre
 <body>
 
 
-    <div class='row'>
-        <div class='col-md-2'>
+<div class="container lg w-100 align-middle">
+        <div class='col-9' id='msg'>
 
-        </div>
-
-        <div class='col-md-10'>
             <section class="details-card">
-                <div class="container">
-
-                    <div class="row">
+                <div class="container h-100 w-100" id='main'>
+                    <div class="row" id='jar'>
                         <?php
                         foreach ($item as $pokidyok) { ?>
-                            <div class="col-md-3">
-                                <div class="card-content">
-                                    <div class="card-img">
-                                        <img class='picture' width="" src="App/photos/<?= $pokidyok['photo'] ?>">
-                                    </div>
-                                    <div class="card-desc">
-                                        <h3><?= $pokidyok['surname'] ?> <?= $pokidyok['name'] ?></h3>
-                                        <!-- <?php $rest = substr("{$pokidyok['description']}", 0, 25) ?>
-                                        <?php echo "<p>{$rest}</p>" ?> -->
+                            <div class="col-lg-4 content " id='contant'>
 
+                                <div class="card w-100 h-100 mb-2" id='card'>
+                                    <p class="btn btn-card border-2" id='nameBtn'>
+                                        <?php echo $_POST['cat'] ?>
+                                    </p>
 
-                                        <form action='../new_window.php' method='post'>
-                                            <input type='hidden' name='name' value='<?= $pokidyok['name'] ?> ' />
+                                    <div class="card-body">
+                                        <div class='container' id='picture_dom' style="width:100%; height:200px">
+                                            <img class='img-fluid' id='picture' width="" src="App\photos/<?= $pokidyok['photo'] ?>">
+                                        </div>
+
+                                        <h5 class="card-title"><?= $pokidyok['surname'] ?> <?= $pokidyok['name'] ?></h5>
+                                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                                        <form method='post'>
+                                            <input type='hidden' name='name' value='<?= $pokidyok['surname'] ?> ' />
                                             <!-- <input type='hidden' name='read' value='read' /> -->
+                                            <button type="button" name='read' id='read' class="btn btn-card border-2 " value="<?= $pokidyok['id'] ?>">UKR</button>
                                             <button type="button" name='read_en' id='read_en' class="btn btn-card border-2 " value="<?= $pokidyok['id'] ?>">ENG</button>
                                         </form>
-
-
                                     </div>
-
                                 </div>
+
                             </div>
                         <?php } ?>
                     </div>
-                    <div class='inner'>
-                        <?php
-
-                        // $items = new ItemsController();
-                        // $items->Read($_POST['read']);
-                        // $items->Search_Name($_POST['Search']);
-
-                        // $items->Search_by_Category($_POST['Subject']);
-
-                        // $user = new UserController();
-                        // $user->TakeComment($_POST['Comment']);
-
-
-                        ?>
-                    </div>
-
+                </div>
 
             </section>
         </div>
-
     </div>
 
 

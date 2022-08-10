@@ -43,8 +43,8 @@
         $(function() {
             // Number of items and limits the number of items per page
             // .content finds the class content in the html page
-            // #jar finds the id jar in the html page
-            let numberOfItems = $("#jar .content").length;
+            // #jar finds the id jar in the html page (.contant)-was like THIS!!!
+            let numberOfItems = $("#jar #contant").length;
             // change limitPerPage based on how many rows you want
             let limitPerPage = 6;
             // Total pages rounded upwards

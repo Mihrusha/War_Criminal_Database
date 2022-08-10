@@ -73,7 +73,7 @@ if (isset($_POST['by_name'])) {
 
         <div class='row'>
             <div class='col'>
-                <div class='container mt-5' id='sendComment' name='sendComment'>
+                <div class='container mt-5 mb-2' id='sendComment' name='sendComment'>
                     <form>
                         <div class="mb-3">
                             <label for="Name" class="form-label">Name</label>

@@ -188,8 +188,10 @@
 </body>
 <script>
       tinymce.init({
-        selector: '.description',
+        selector: '.description'
         
       });
+
+      
     </script>
 </html>

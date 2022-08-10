@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="App\Templates\main.css?v=9">
-
+    <link rel="stylesheet" href="App\Templates\main.css?v=8">
+   
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
@@ -77,7 +77,7 @@
                                             <input class="form-control mr-sm-2" type="search" placeholder="Search" name='search' id='search' aria-label="Search">
                                         </div>
                                         <div class='col'>
-                                            <button class="btn btn-success " type="submit" id="searchBtn" name='searchBtn'>Search</button>
+                                            <button class="btn btn-outline-success " type="submit" id="searchBtn" name='searchBtn'>Search</button>
                                         </div>
                                     </div>
                                 </div>
@@ -156,8 +156,8 @@
 
     <div class='row'>
 
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;" id='side'>
-
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;" id = 'side'>
+            
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
@@ -210,13 +210,12 @@
         <div class='col-9' id='msg'>
 
             <section class="details-card">
-                <div class="container h-100 w-100" id='main'>
+                <div class="container">
                     <div class="row" id='jar'>
                         <?php
                         foreach ($data as $pokidyok) { ?>
-                            <div class="col-lg-4 content " id='contant'>
-
-                                <div class="card w-100 h-100 mb-2" id='card'>
+                            <div class="col-md-3 content">
+                                <div class="card-content">
                                     <p class="btn btn-card border-2" id='nameBtn'>
                                         <?php foreach ($category as $row) {
                                             if ($row['id'] == $pokidyok['category_id'])
@@ -224,26 +223,27 @@
                                         }  ?>
                                     </p>
 
-                                    <div class="card-body">
-                                        <div class='container' id='picture_dom' style="width:100%; height:200px">
-                                            <img class='img-fluid' id='picture' width="" src="App\photos/<?= $pokidyok['photo'] ?>">
-                                        </div>
 
-                                        <h5 class="card-title"><?= $pokidyok['surname'] ?> <?= $pokidyok['name'] ?></h5>
-                                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                                    <div class="card-img">
+                                        <img class='picture' width="" src="App\photos/<?= $pokidyok['photo'] ?>">
+
+                                    </div>
+                                    <div class="card-desc">
+                                        <h3> <?= $pokidyok['surname'] ?> <?= $pokidyok['name'] ?></h3>
+                                        <!-- <?php $rest = substr("{$pokidyok['description']}", 0, 25) ?>
+                                        <?php echo "<p>{$rest}</p>" ?> -->
                                         <form method='post'>
                                             <input type='hidden' name='name' value='<?= $pokidyok['surname'] ?> ' />
                                             <!-- <input type='hidden' name='read' value='read' /> -->
                                             <button type="button" name='read' id='read' class="btn btn-card border-2 " value="<?= $pokidyok['id'] ?>">UKR</button>
                                             <button type="button" name='read_en' id='read_en' class="btn btn-card border-2 " value="<?= $pokidyok['id'] ?>">ENG</button>
+
                                         </form>
                                     </div>
                                 </div>
-
                             </div>
                         <?php } ?>
                     </div>
-                </div>
 
             </section>
         </div>
@@ -365,10 +365,6 @@
                 element = this;
             })
             // var leng = $("[name='leng']").val();
-            if(leng<1){
-                alert('Please choose lenguage')
-            }
-
 
             if (leng == 1) {
                 url = 'App/Templates/Article.php';
@@ -398,21 +394,18 @@
 
         $('#role').change(function() {
             var cat = $('#role').val();
-            if(cat=='no'){
-                location.href = 'index.php';
-            }
             var leng = [];
             $(".form-check-input:checked").each(function() {
                 leng.push($(this).val());
                 element = this;
             })
-            // if (leng == 1) {
+            if (leng == 1) {
                 url = 'App/Templates/CategoryUkr.php';
-            // }
+            }
 
-            // if (leng == 2) {
-            //     url = 'App/Templates/CategoryEng.php';
-            // }
+            if (leng == 2) {
+                url = 'App/Templates/CategoryEng.php';
+            }
 
             $.ajax({
                 type: 'post',

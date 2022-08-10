@@ -278,13 +278,13 @@ $data_eng = $pokidky->GetEng();
                 var description = currentRow.find("td:eq(4)").text();
                 var category_id = currentRow.find("td:eq(5)").text();
                 var files = currentRow.find("td:eq(6)").text();
-
+                
 
                 $('#ukrId').val(id);
                 $('#pho_ukr').val(photo);
                 $('#name_ukr').val(name);
                 $('#surname_ukr').val(surname);
-                $('#descr_ukr').val(description);
+                $('.description').val(description);
                 $('#cat_id_ukr').val(category_id);
                 $('#file_ukr').val(files);
                 $("#editUkr").modal('show');
@@ -335,7 +335,7 @@ $data_eng = $pokidky->GetEng();
                 $('#pho_eng').val(photo);
                 $('#name_eng').val(name);
                 $('#surname_eng').val(surname);
-                $('#descr_eng').val(description);
+                $('.description').val(description);
                 $('#cat_id_eng').val(category_id);
                 $('#file_eng').val(files);
                 $("#editEng").modal('show');
