@@ -4,9 +4,15 @@ use App\Models\Registration;
 
 include_once 'C:\xampp\htdocs\WarCriminalsDatabase\vendor\autoload.php';
 $registration = new Registration;
-$registration->Login();
+$registration->UserLogin();
 
 
+if (isset($_POST['Add'])) {
+
+    if ($_POST['registration'] != '') {
+        $registration->UserRegistration();
+    }
+}
 
 ?>
 
@@ -36,27 +42,56 @@ $registration->Login();
             <h1 class="text-center display-4 pb-5">LOGIN</h1>
             <?php if (isset($_GET['error'])) { ?>
                 <div class="alert alert-danger" role="alert">
-                    <?= addslashes(htmlspecialchars($_GET['error'])); ?>
+                    <?= htmlspecialchars($_GET['error']); ?>
                 </div>
             <?php } ?>
 
             <div class="mb-3">
+                <label for="check" class="form-label">New User</label>
+                <input type="checkbox" name="registration" id="registration" value='new'>
+            </div>
+
+            <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <!-- //<input type='hidden' name='name' value='<?= $model['name'] ?> ' /> -->
-                <input type="text" class="form-control" name="name">
+                <input type="text" class="form-control" name="name" id='name'>
             </div>
+
+            <!-- <div class="mb-3" style='display:none' id='milo'>
+                <label for="email" class="form-label">Email</label>
+                //<input type='hidden' name='name' value='<?= $model['name'] ?> ' />
+                <input type="email" class="form-control" name="email" id='email'>
+            </div> -->
 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <!-- <input type='hidden' name='password' value='<?= $model['password'] ?> ' /> -->
                 <input type="password" class="form-control" name="password" id="password">
             </div>
-            <button type="submit" name='Add' class="btn btn-primary">
+            <button type="submit" name='Add' id='Add' class="btn btn-primary">
                 Login</button>
             <a href="/WarCriminalsDatabase/index.php" class="btn btn-success">Back</a>
         </form>
     </div>
 
 </body>
+
+<script>
+    // $('#registration').change(function(){
+    //     if(!$('#registration').is(":checked")){
+    //         $('#milo').css('display','none');
+    //     }
+    //     else
+    //     $('#milo').css('display','block');
+    // })
+    // $('#Add').click(function(){
+    //     var reg = $('#registration').val();
+    //     var name = $('#name').val();
+    //     var password = $('#password').val();
+    //     console.log(reg);
+    //     console.log(name);
+    //     console.log(password);
+    // })
+</script>
 
 </html>

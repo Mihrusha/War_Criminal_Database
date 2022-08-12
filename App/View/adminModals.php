@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Description:</label>
-                        <textarea rows="" cols="" type="text" name="description_ukr"  id="description_ukr" class="description" value=""></textarea>
+                        <textarea rows="" cols="" type="text" name="description_ukr" id="description_ukr" class="description" value=""></textarea>
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Category_id:</label>
@@ -119,7 +119,7 @@
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Description:</label>
-                        <textarea rows="" cols="" type="text" name="descr_ukr" id="descr_ukr" class="description" value=""></textarea>
+                        <textarea   type="text" name="descr_ukr" id="descr_ukr" class="description" value=""> </textarea>
                     </div>
                     <div class="form-group">
                         <label for="first-name" class="col-form-label"> Category_id:</label>
@@ -187,11 +187,35 @@
     </div>
 </body>
 <script>
-      tinymce.init({
-        selector: '.description'
-        
-      });
+document.addEventListener('focusin', (e) => {
+  if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+    e.stopImmediatePropagation();
+  }
+});
 
+    tinymce.init({
       
-    </script>
+        selector: '.description',
+        setup: function (editor) {
+        editor.on('change', function () {
+            editor.save();
+        });
+    },
+        plugins: 'lists advlist,link',
+     
+    });
+
+//     tinymce.init({
+      
+//       selector: 'textarea#descr_eng',
+//       setup: function (editor) {
+//       editor.on('change', function () {
+//           editor.save();
+//       });
+//   },
+//       plugins: 'lists advlist,link',
+   
+//   });
+</script>
+
 </html>

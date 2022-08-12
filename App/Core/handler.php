@@ -6,12 +6,12 @@ use App\Controller\Controller;
 
 $controller = new Controller;
 
-if (isset($_POST['insert']))
-{
-    $result = $controller->Comment();
+// if (isset($_POST['insert']))
+// {
+//     $result = $controller->Comment();
 
-    echo $result;
-}
+//     echo $result;
+// }
 
 // if (isset($_POST['edit']))
 // {

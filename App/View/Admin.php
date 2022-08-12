@@ -2,13 +2,16 @@
 
 use App\Models\Comments;
 use App\Models\Pokidky;
+use App\Models\Registration;
 
 include_once 'C:\xampp\htdocs\WarCriminalsDatabase\vendor\autoload.php';
 $pokidky = new Pokidky;
 $comm =   new Comments;
+$person = new Registration;
 $comments = $comm->getAll();
 $data = $pokidky->GetAll();
 $data_eng = $pokidky->GetEng();
+$users = $person->GetUsers();
 ?>
 
 <!DOCTYPE html>
@@ -41,8 +44,9 @@ $data_eng = $pokidky->GetEng();
                 <button class="navbar-brand" href="" id='Comments'>Comments</button>
                 <button class="navbar-brand" href="" id='Add_Bastard'>Add Bastard</button>
                 <button class="navbar-brand" href="" id='Add_Pokidyok'>Add Pokidyok</button>
-                
-                <form class="form">
+                <button class="navbar-brand" href="" id='UserAudit'>User Audit</button>
+
+                <!-- <form class="form">
                     <div class='row'>
                         <div class='col'>
                             <select class="form-select" aria-label="Default select example" id="role" name='role'>
@@ -59,7 +63,7 @@ $data_eng = $pokidky->GetEng();
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </div>
                     </div>
-                </form>
+                </form> -->
             </nav>
         </header>
 
@@ -91,6 +95,7 @@ $data_eng = $pokidky->GetEng();
                             <td>
                                 <div class='container'>
                                     <button class='btn btn-danger m-2' id=deleteUkr name='deleteUkr'>DELETE</button>
+                                    <!-- <a href="Edit.php" class='btn btn-success m-2' id='ukrBtn' name='ukrBtn'>EDIT</a> -->
                                     <button class='btn btn-success m-2' id='ukrBtn' name='ukrBtn'>EDIT</button>
                                 </div>
                             </td>
@@ -151,7 +156,7 @@ $data_eng = $pokidky->GetEng();
                         <th scope="col">pok_id</th>
                         <th scope="col">avatar</th>
                         <th scope="col">Action</th>
-                        
+
                     </tr>
                 </thead>
                 <?php foreach ($comments as $row) : ?>
@@ -163,11 +168,48 @@ $data_eng = $pokidky->GetEng();
                             <td><?= $row['massage'] ?></td>
                             <td><?= $row['pok_id'] ?></td>
                             <td><?= $row['avatar'] ?></td>
-                           
+
                             <td>
                                 <div class='container'>
-                                    <button class='btn btn-danger m-2' id='deleteEng' name='deleteEng'>DELETE</button>
-                                    <button class='btn btn-success m-2' id='engBtn' name='engBtn'>EDIT</button>
+                                    <button class='btn btn-danger m-2' type='button'id='deleteCom' name='deleteCom'>DELETE</button>
+                                    <button class='btn btn-success m-2' type='button'id='editCom' name='editCom'>EDIT</button>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                <?php endforeach ?>
+            </table>
+        </div>
+
+        <!-- *******************USERS TABLE***************** -->
+        <div class='container' id='UserTable' style="display: none;">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>Comments
+                        <th scope="col">id</th>
+                        <th scope="col">name</th>
+
+                        <th scope="col">email</th>
+                        <th scope="col">IsBanned</th>
+                        <th scope="col">Action</th>
+
+                    </tr>
+                </thead>
+                <?php foreach ($users as $row) : ?>
+                    <tbody>
+                        <tr>
+                            <!-- <th scope="row"></th> -->
+                            <td><?= $row['id'] ?></td>
+                            <td><?= $row['name'] ?></td>
+                            <td><?= $row['email'] ?></td>
+                            <td><?= $row['IsBanned'] ?></td>
+
+
+                            <td>
+                                <div class='container'>
+                                    <button class='btn btn-danger m-2' type='button' id='Banned' name='Banned' value='1'>Banned</button>
+                                    <button class='btn btn-success m-2'type='button' id='UnBanned' name='UnBanned' value='0'>UnBanned</button>
                                 </div>
                             </td>
                         </tr>
@@ -189,6 +231,7 @@ $data_eng = $pokidky->GetEng();
                 $('#UkrTable').css('display', 'block');
                 $('#EngTable').css('display', 'none');
                 $('#commentsTable').css('display', 'none');
+                $('#UserTable').css('display', 'none');
             })
 
             $('#EngPanel').click(function() {
@@ -196,12 +239,21 @@ $data_eng = $pokidky->GetEng();
                 $('#EngTable').css('display', 'block');
                 $('#UkrTable').css('display', 'none');
                 $('#commentsTable').css('display', 'none');
+                $('#UserTable').css('display', 'none');
             })
 
-            $('#Comments').click(function(){
+            $('#Comments').click(function() {
                 $('#commentsTable').css('display', 'block');
                 $('#UkrTable').css('display', 'none');
                 $('#EngTable').css('display', 'none');
+                $('#UserTable').css('display', 'none');
+            })
+
+            $('#UserAudit').click(function() {
+                $('#UserTable').css('display', 'block');
+                $('#UkrTable').css('display', 'none');
+                $('#EngTable').css('display', 'none');
+                $('#commentsTable').css('display', 'none');
             })
 
             $('#Add_Bastard').click(function() {
@@ -278,7 +330,7 @@ $data_eng = $pokidky->GetEng();
                 var description = currentRow.find("td:eq(4)").text();
                 var category_id = currentRow.find("td:eq(5)").text();
                 var files = currentRow.find("td:eq(6)").text();
-                
+
 
                 $('#ukrId').val(id);
                 $('#pho_ukr').val(photo);
@@ -288,6 +340,8 @@ $data_eng = $pokidky->GetEng();
                 $('#cat_id_ukr').val(category_id);
                 $('#file_ukr').val(files);
                 $("#editUkr").modal('show');
+                tinyMCE.activeEditor.setContent(description);
+                tinyMCE.triggerSave()
             })
 
 
@@ -299,7 +353,7 @@ $data_eng = $pokidky->GetEng();
                 let description = $('#descr_ukr').val();
                 let category_id = $('#cat_id_ukr').val();
                 let files = $('#file_ukr').val();
-
+                tinyMCE.triggerSave()
                 $.ajax({
                     type: 'post',
                     url: '../Templates/edit.php',
@@ -310,7 +364,8 @@ $data_eng = $pokidky->GetEng();
                         ukr_photo: photo,
                         ukr_description: description,
                         ukr_category_id: category_id,
-                        ukr_files: files
+                        ukr_files: files,
+
                     },
                     success: function(data) {
 
@@ -318,7 +373,7 @@ $data_eng = $pokidky->GetEng();
                     }
                 })
             })
-            // *************************************************************
+            // ***************ENG UPDATE********************************
 
             $("[name='engBtn']").click(function() {
                 var currentRow = $(this).closest("tr")
@@ -339,6 +394,8 @@ $data_eng = $pokidky->GetEng();
                 $('#cat_id_eng').val(category_id);
                 $('#file_eng').val(files);
                 $("#editEng").modal('show');
+                tinyMCE.activeEditor.setContent(description);
+                tinyMCE.triggerSave()
             })
 
 
@@ -350,7 +407,7 @@ $data_eng = $pokidky->GetEng();
                 let description = $('#descr_eng').val();
                 let category_id = $('#cat_id_eng').val();
                 let files = $('#file_eng').val();
-
+                tinyMCE.triggerSave()
                 $.ajax({
                     type: 'post',
                     url: '../Templates/edit.php',
@@ -376,7 +433,7 @@ $data_eng = $pokidky->GetEng();
         $("[name='deleteUkr']").click(function() {
             var currentRow = $(this).closest("tr")
             var id = currentRow.find("td:eq(0)").text();
-            confirm("Do you realy want delete")
+            confirm("Do you realy want delete?")
             $.ajax({
                 type: 'post',
                 url: '../Templates/delete.php',
@@ -397,7 +454,7 @@ $data_eng = $pokidky->GetEng();
         $("[name='deleteEng']").click(function() {
             var currentRow = $(this).closest("tr")
             var id = currentRow.find("td:eq(0)").text();
-            confirm("Do you realy want delete")
+            confirm("Do you realy want delete?")
             $.ajax({
                 type: 'post',
                 url: '../Templates/delete.php',
@@ -412,6 +469,79 @@ $data_eng = $pokidky->GetEng();
                 }
             })
         })
+
+
+        // **************DELETE COMMENTS***********
+
+        $("[name='deleteCom']").click(function() {
+            var currentRow = $(this).closest("tr")
+            var id = currentRow.find("td:eq(0)").text();
+            confirm("Do you realy want delete?")
+            $.ajax({
+                type: 'post',
+                url: '../Templates/delete.php',
+                data: {
+                    delete_com: id
+                },
+
+                success: function(data) {
+
+                    $('#result').html(data);
+                   console.log(data);
+                    
+                }
+               
+            })
+            return false;
+        })
+
+        // ************USER Bann STATUS************
+        $("[name='Banned']").click(function() {
+            var currentRow = $(this).closest("tr")
+            var id = currentRow.find("td:eq(0)").text();
+
+            confirm("Do you realy want change status?")
+            $.ajax({
+                type: 'post',
+                url: '../Templates/edit.php',
+                data: {
+                    ban_id: 1,
+                    id: id
+                },
+
+                success: function(data) {
+
+                    $('#result').html(data);
+                  
+                }
+
+            })
+            return false;
+        })
+
+        $("[name='UnBanned']").click(function() {
+            var currentRow = $(this).closest("tr")
+            var id = currentRow.find("td:eq(0)").text();
+
+            confirm("Do you realy want change status?")
+            $.ajax({
+                type: 'post',
+                url: '../Templates/edit.php',
+                data: {
+                    unban_id: 0,
+                    id: id
+                },
+
+                success: function(data) {
+
+                    $('#result').html(data);
+                  
+                }
+
+            })
+            return false;
+        })
+        
     </script>
 </body>
 

@@ -100,8 +100,40 @@ class Pokidky
 
     function getOne()
     {
-        $id = $this->db->conn->quote($_POST["id"]);
+        $id =$this->check_input($_POST["id"]);
+        $id = $this->db->conn->quote($id);
         $sql = "SELECT id, name,surname, description, photo,files FROM pokidky WHERE id=$id";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $item = $stmt->fetchAll();
+        } else {
+            $item = 0;
+        }
+
+        return $item;
+        $this->db->conn= null;
+    }
+
+    function LastUkr()
+    {
+        
+        $sql = "SELECT max('id') FROM pokidky";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $item = $stmt->fetchAll();
+        } else {
+            $item = 0;
+        }
+
+        return $item;
+        $this->db->conn= null;
+    }
+
+    function LastEng()
+    {
+        $sql = "SELECT max('id') FROM pokidky_eng";
         $stmt = $this->db->conn->prepare($sql);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -121,6 +153,7 @@ class Pokidky
         
         $sql = "SELECT id, name,surname, description, photo,files FROM pokidky WHERE surname=$surname";
         $stmt = $this->db->conn->prepare($sql);
+      
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
             $item = $stmt->fetchAll();
@@ -155,6 +188,7 @@ class Pokidky
 
     function getOneEng()
     {
+        $id =$this->check_input($_POST["id"]);
         $id = $this->db->conn->quote($_POST["id"]);
         $sql = "SELECT id, name,surname, description, photo,files FROM pokidky_eng WHERE id=$id";
         $stmt = $this->db->conn->prepare($sql);

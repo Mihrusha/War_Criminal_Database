@@ -6,6 +6,7 @@ body{
     
 }
 
+
 #shapka{
     background-color: rgb(218, 204, 215);
     /* background-image: url('../App/photos/flag.jpg'); */
@@ -13,7 +14,7 @@ body{
 }
 
 #side{
-    background-color: #85bea1;
+    background-image: url('../photos/flag.jpg');
     display: none;
 }
 
@@ -45,24 +46,17 @@ body{
 
 }
 
-section{
-    padding: 100px 0;
-    
-}
-.details-card {
-	/* background: #ecf0f1; */
-    
-}
-
 
 #main{
     display: flex;
+
 }
 
 #jar{
   
     width: 100%;
     height: 100%;  
+    min-width: 400px;
   }
   
 
@@ -71,6 +65,7 @@ section{
     position: relative;
     display: block;
     
+   
     
 }
 
