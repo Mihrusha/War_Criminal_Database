@@ -85,9 +85,9 @@ $last_id = $pokidky->LastUkr();
                     <!-- <a href="/WarCriminalsDatabase/index.php" class="btn btn-success m-2">Back</a> -->
                     <?php foreach ($last_id as $last_el) { ?>
                         <button class='btn btn-warning m-2' id='next' name='next' data-id='<?= $last_el[0] ?>' value="<?= $row['id']; ?>">NEXT</button>
-                        <p class='text-right m-2 '><i class=" fa fa-regular fa-thumbs-up fa-2x" id='like'><?= $row['like_count']; ?></i></p>
+                        <p class='text-right m-2 '><i class=" fa fa-regular fa-thumbs-up fa-2x" id='like' data-like='<?= $row['like_count']; ?>'><?= $row['like_count']; ?></i></p>
                         
-                        <p class='text-right m-2'><i class=" fa fa-regular fa-thumbs-down fa-2x" id='dislike'><?= $row['dislike_count']; ?></i></p>
+                        <p class='text-right m-2'><i class=" fa fa-regular fa-thumbs-down fa-2x" id='dislike'data-dislike=<?= $row['dislike_count']; ?>> <?= $row['dislike_count']; ?></i></p>
                         
                 </div>
 
@@ -185,9 +185,10 @@ $last_id = $pokidky->LastUkr();
     <script>
         $(document).ready(function() {
             last = $('#next').attr('data-id');
-            let l_count = 0;
-            let d_count = 0;
-            
+             l_count = $('#like').attr('data-like');
+             d_count = $('#dislike').attr('data-dislike');
+               
+
             $('#like').click(function(){
                 ++ l_count;
                 

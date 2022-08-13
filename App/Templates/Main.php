@@ -167,7 +167,7 @@ error_reporting(E_ERROR );
                                         <img class='img-fluid' id='picture' width="" src="App\photos/<?= $pokidyok['photo'] ?>">
                                     </div>
 
-                                    <h5 class="card-title"><?= $pokidyok['surname'] ?> <?= $pokidyok['name'] ?></h5>
+                                    <h5 class="card-title"><?= $pokidyok['surname'] ?> <?= $pokidyok['name'] ?></h5> 
                                     <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
                                     <form method='post'>
                                         <input type='hidden' name='name' value='<?= $pokidyok['surname'] ?> ' />

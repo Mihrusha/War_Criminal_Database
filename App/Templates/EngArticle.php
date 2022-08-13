@@ -4,7 +4,7 @@ use App\Models\Comments;
 use App\Models\Pokidky;
 
 include_once "C:/xampp/htdocs/WarCriminalsDatabase/vendor/autoload.php";
-
+error_reporting(E_ERROR);
 $pokidky_eng = new Pokidky;
 $one;
 $comment = new Comments;
@@ -22,12 +22,12 @@ if (isset($_POST['by_name'])) {
 
 if (isset($_POST['l_count'])) {
 
-    $pokidky->PostLike($_POST['l_count'], $_POST['id']);
+    $pokidky_eng->PostLike($_POST['l_count'], $_POST['id']);
 }
 
 if (isset($_POST['d_count'])) {
 
-    $pokidky->PostDislike($_POST['d_count'], $_POST['id']);
+    $pokidky_eng->PostDislike($_POST['d_count'], $_POST['id']);
 }
 
 $last_id = $pokidky_eng->LastEng();
@@ -42,12 +42,12 @@ $last_id = $pokidky_eng->LastEng();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://use.fontawesome.com/eb525cda51.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="App\Templates\article.css?v=4">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="App\Templates\article.css?v=4">
     <?php foreach ($one as $row) : ?>
         <title><?php echo $row['name'] . ' ' . $row['surname']  ?></title>
 </head>
@@ -76,11 +76,11 @@ $last_id = $pokidky_eng->LastEng();
                     <!-- <a href="/WarCriminalsDatabase/index.php" class="btn btn-success m-2">Back</a> -->
                     <?php foreach ($last_id as $last_el) { ?>
                         <button class='btn btn-warning m-2' id='next' name='next' data-id='<?= $last_el[0] ?>' value="<?= $row['id']; ?>">NEXT</button>
-                        <?php foreach($two as $col){ ?>
-                        <p class='text-right m-2 '><i class=" fa fa-regular fa-thumbs-up fa-2x" id='like'><?= $col['like_count']; ?></i></p>
+                        <?php foreach ($two as $col) { ?>
+                            <p class='text-right m-2 '><i class=" fa fa-regular fa-thumbs-up fa-2x" id='like' data-like='<?= $col['like_count']; ?>'><?= $col['like_count']; ?></i></p>
 
-                        <p class='text-right m-2'><i class=" fa fa-regular fa-thumbs-down fa-2x" id='dislike'><?= $col['dislike_count']; ?></i></p>
-                        <?php }?>
+                            <p class='text-right m-2'><i class=" fa fa-regular fa-thumbs-down fa-2x" id='dislike' data-dislike=<?= $col['dislike_count']; ?>> <?= $col['dislike_count']; ?></i></p>
+                        <?php } ?>
                 </div>
             <?php  } ?>
             </div>
@@ -177,7 +177,43 @@ $last_id = $pokidky_eng->LastEng();
     <script>
         $(document).ready(function() {
             last = $('#next').attr('data-id');
+            l_count = $('#like').attr('data-like');
+            d_count = $('#dislike').attr('data-dislike');
 
+            $('#like').click(function() {
+                ++l_count;
+
+                let id = $('#pok_id').val();
+                $.ajax({
+                    type: 'post',
+                    url: 'App/Templates/EngArticle.php',
+                    data: {
+                        l_count: l_count,
+                        id: id
+                    }
+                    // success:function(data){
+                    //     alert(data);
+                    // }
+                })
+                $('#like').text(l_count);
+            })
+
+            $('#dislike').click(function() {
+                ++d_count;
+                let id = $('#pok_id').val();
+                $.ajax({
+                    type: 'post',
+                    url: 'App/Templates/EngArticle.php',
+                    data: {
+                        d_count: d_count,
+                        id: id
+                    }
+                    // success:function(data){
+                    //     alert(data);
+                    // }
+                })
+                $('#dislike').text(d_count);
+            })
             $('#next').click(function() {
                 next = 0;
                 next = $(this).val();
