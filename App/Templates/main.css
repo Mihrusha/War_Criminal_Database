@@ -15,6 +15,7 @@ body{
 
 #side{
     background-image: url('../photos/flag.jpg');
+    background-size:cover;
     display: none;
 }
 

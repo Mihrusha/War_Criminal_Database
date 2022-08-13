@@ -1,3 +1,6 @@
+<?php
+error_reporting(E_ERROR );
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="App\Templates\main.css?v=16">
+    <link rel="stylesheet" href="App\Templates\main.css?v=18">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -34,8 +37,6 @@
 <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
 <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
 </svg> : <span style="color:red;">' . $counter . '</span>' . $info;
-
-
             ?>
             <div class='d-flex '>
                 <h1> <i class="fa-solid fa-p" id='Kitty'></i>okidky Database</i></h1>
@@ -142,15 +143,10 @@
                     </div>
                 </li>
             </ul>
-           
 
         </div>
 
-
-
         <div class='col-9 bg-light mt-2' id='msg'>
-
-
             <div class="container h-100 w-100 " id='main'>
                 <div class="row" id='jar'>
                     <?php
@@ -186,8 +182,6 @@
                     <?php } ?>
                 </div>
             </div>
-
-
         </div>
     </div>
 
@@ -197,11 +191,8 @@
     <footer>
         <div class="container">
             <footer class="py-3 my-4">
-
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-
                     <li class="nav-item"><a href="index.php" class="nav-link px-2 text-muted">Home</a></li>
-
                 </ul>
                 <p class="text-center text-muted">
                     For Work propositions
@@ -209,10 +200,8 @@
                 </p>
                 <p class="text-center text-muted"> email:melkorphp@gmail.com</p>
                 <hr>
-
             </footer>
         </div>
-
     </footer>
 
     <div class="fixed-bottom  w-75 mx-auto" id="pag_menu">
@@ -227,7 +216,6 @@
 
     <script src="App\Templates\pagination.js"></script>
     <script>
-        
         $('#Kitty').click(function() {
             location.href = 'App/View/Login.php';
         })
@@ -269,7 +257,7 @@
 
         $("[id='read']").click(function() {
             var id = $(this).val();
-            $('#pag_menu').css('display','none');
+            $('#pag_menu').css('display', 'none');
             $.ajax({
                 type: 'post',
                 url: 'App/Templates/Article.php',
@@ -289,7 +277,7 @@
 
         $("[id='read_en']").click(function() {
             var id = $(this).val();
-            $('#pag_menu').css('display','none');
+            $('#pag_menu').css('display', 'none');
             $.ajax({
                 type: 'post',
                 url: 'App/Templates/EngArticle.php',
@@ -347,6 +335,7 @@
 
         $('#role').change(function() {
             var cat = $('#role').val();
+            alert(cat);
             if (cat == 'no') {
                 location.href = 'index.php';
             }

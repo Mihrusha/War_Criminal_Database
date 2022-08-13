@@ -51,3 +51,14 @@
     height: auto;
     object-fit: cover;
 }
+
+#like{
+    color: blue;
+    margin-left: 50px;
+    
+}
+
+#dislike{
+    color: blue;
+    margin-left: 20px;
+}

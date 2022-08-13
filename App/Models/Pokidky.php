@@ -102,7 +102,7 @@ class Pokidky
     {
         $id =$this->check_input($_POST["id"]);
         $id = $this->db->conn->quote($id);
-        $sql = "SELECT id, name,surname, description, photo,files FROM pokidky WHERE id=$id";
+        $sql = "SELECT id, name,surname, description, photo,files,like_count,dislike_count FROM pokidky WHERE id=$id";
         $stmt = $this->db->conn->prepare($sql);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -118,7 +118,7 @@ class Pokidky
     function LastUkr()
     {
         
-        $sql = "SELECT max('id') FROM pokidky";
+        $sql = "SELECT max(id) FROM pokidky";
         $stmt = $this->db->conn->prepare($sql);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -133,7 +133,7 @@ class Pokidky
 
     function LastEng()
     {
-        $sql = "SELECT max('id') FROM pokidky_eng";
+        $sql = "SELECT max(id) FROM pokidky_eng";
         $stmt = $this->db->conn->prepare($sql);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -151,7 +151,7 @@ class Pokidky
         $surname =$this->check_input($_POST["surname"]);
         $surname = $this->db->conn->quote($surname);
         
-        $sql = "SELECT id, name,surname, description, photo,files FROM pokidky WHERE surname=$surname";
+        $sql = "SELECT id, name,surname, description, photo,files,like_count,dislike_count FROM pokidky WHERE surname=$surname";
         $stmt = $this->db->conn->prepare($sql);
       
         $stmt->execute();
@@ -323,5 +323,45 @@ class Pokidky
         $data = htmlspecialchars($data);
         return $data;
       }
+
+    public function PostLike($data,$id){
+       $old_data = implode(',',$this->GetLike($id));
+       $data = $old_data+$data;
+        $sql="UPDATE  pokidky SET like_count = $data WHERE id = $id ";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+    }
+
+    public function GetLike($id){
+        $sql="SELECT like_count FROM pokidky WHERE id = $id";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $item = $stmt->fetchAll();
+        } else {
+            $item = 0;
+        }
+        return $item;
+    }
+
+    public function PostDislike($data,$id){
+        $old_data = implode(',',$this->GetDisLike($id));
+        $data = $old_data+$data;
+        $sql="UPDATE  pokidky SET dislike_count = $data WHERE id = $id ";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+    }
+
+    public function GetDisLike($id){
+        $sql="SELECT dislike_count FROM pokidky WHERE id = $id";
+        $stmt = $this->db->conn->prepare($sql);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $item = $stmt->fetchAll();
+        } else {
+            $item = 0;
+        }
+        return $item;
+    }
 
 }

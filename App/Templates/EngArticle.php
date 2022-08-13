@@ -10,15 +10,27 @@ $one;
 $comment = new Comments;
 
 $one = $pokidky_eng->getOneEng();
+$two = $pokidky_eng->getOne();
 if (isset($_POST['id'])) {
     $answer = $comment->getMassage($_POST['id']);
 }
 
 if (isset($_POST['by_name'])) {
     $one = $pokidky_eng->getOneNameEng();
+    $two = $pokidky_eng->getOneName();
 }
 
+if (isset($_POST['l_count'])) {
 
+    $pokidky->PostLike($_POST['l_count'], $_POST['id']);
+}
+
+if (isset($_POST['d_count'])) {
+
+    $pokidky->PostDislike($_POST['d_count'], $_POST['id']);
+}
+
+$last_id = $pokidky_eng->LastEng();
 ?>
 
 <!DOCTYPE html>
@@ -28,14 +40,14 @@ if (isset($_POST['by_name'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="App\Templates\article.css?v=1">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
+    <script src="https://use.fontawesome.com/eb525cda51.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous">
-    <script src="https://use.fontawesome.com/6d3c048c3c.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="App\Templates\article.css?v=4">
     <?php foreach ($one as $row) : ?>
         <title><?php echo $row['name'] . ' ' . $row['surname']  ?></title>
 </head>
@@ -59,9 +71,18 @@ if (isset($_POST['by_name'])) {
                 <div>
                     <p><a href="files/<?= $row['files'] ?>" download>Download Files</a>
                 </div>
-                <button class='btn btn-success mb-2' id='back' name='back' value="<?= $row['id']; ?>">BACK</button>
-                <!-- <a href="/WarCriminalsDatabase/index.php" class="btn btn-success m-2">Back</a> -->
-                <button class='btn btn-warning mb-2' id='next' name='next' value="<?= $row['id']; ?>">NEXT</button>
+                <div class='d-flex inline'>
+                    <button class='btn btn-success m-2' id='back' name='back' value="<?= $row['id']; ?>">PREV</button>
+                    <!-- <a href="/WarCriminalsDatabase/index.php" class="btn btn-success m-2">Back</a> -->
+                    <?php foreach ($last_id as $last_el) { ?>
+                        <button class='btn btn-warning m-2' id='next' name='next' data-id='<?= $last_el[0] ?>' value="<?= $row['id']; ?>">NEXT</button>
+                        <?php foreach($two as $col){ ?>
+                        <p class='text-right m-2 '><i class=" fa fa-regular fa-thumbs-up fa-2x" id='like'><?= $col['like_count']; ?></i></p>
+
+                        <p class='text-right m-2'><i class=" fa fa-regular fa-thumbs-down fa-2x" id='dislike'><?= $col['dislike_count']; ?></i></p>
+                        <?php }?>
+                </div>
+            <?php  } ?>
             </div>
         </div>
     </div>
@@ -119,10 +140,10 @@ if (isset($_POST['by_name'])) {
             </div>
         </div>
 
-        
+
         <div class='col mt-5' id='result' style='min-width:300px;'>
-        <p id='msg'></p>
-            <div class='container ' id='getComment' name='getComment' >
+            <p id='msg'></p>
+            <div class='container ' id='getComment' name='getComment'>
                 <?php foreach ($answer as $elem) { ?>
                     <div class="row d-flex justify-content-center mt-100 mb-100">
                         <div class="col-lg-10 m-2 w-100">
@@ -155,12 +176,15 @@ if (isset($_POST['by_name'])) {
 
     <script>
         $(document).ready(function() {
+            last = $('#next').attr('data-id');
 
             $('#next').click(function() {
                 next = 0;
                 next = $(this).val();
-
                 next = ++next;
+                if (next > last) {
+                    window.location.href = 'App/Templates/404.php'
+                }
                 $.ajax({
                     type: 'post',
                     url: 'App/Templates/EngArticle.php',
@@ -181,6 +205,9 @@ if (isset($_POST['by_name'])) {
                 prev = $(this).val();
 
                 prev = --prev;
+                if (prev < 1) {
+                    window.location.href = 'App/Templates/404.php'
+                }
                 $.ajax({
                     type: 'post',
                     url: 'App/Templates/EngArticle.php',
@@ -220,19 +247,16 @@ if (isset($_POST['by_name'])) {
                         avatar: avatar
                     },
                     success: function(answer) {
-                         //  $('#msg').load('App/Templates/test.php'),
-                         if (answer.indexOf("Need data") >= 0) {
+                        //  $('#msg').load('App/Templates/test.php'),
+                        if (answer.indexOf("Need data") >= 0) {
                             alert('Fill in all the fields');
-                        }
-
-                        else if (answer.indexOf("You are banned") >= 0) {
+                        } else if (answer.indexOf("You are banned") >= 0) {
                             alert('You are banned');
-                        }
-                        else if (answer.indexOf("New User") >= 0) {
+                        } else if (answer.indexOf("New User") >= 0) {
                             alert('You are new user');
                         } else
                             $('#result').html(answer);
-                        
+
                     }
 
                 })
